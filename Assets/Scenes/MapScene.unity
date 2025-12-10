@@ -1919,17 +1919,31 @@ MonoBehaviour:
   - {fileID: 2957701800189460627, guid: 067108fb6c319234687e07f5913ac3a2, type: 3}
   - {fileID: 7673969641915314468, guid: ff2c9ac741df32e47a281ebe1ffb732e, type: 3}
   towerYOffset: 0.02
-  roadStraight: {fileID: -927199367670048503, guid: 355ae750ffa048944a06b7035218160c, type: 3}
-  roadTileCorner: {fileID: -927199367670048503, guid: 244f0e0d3a9397241a523beb97ea38e6, type: 3}
-  tileEmpty: {fileID: -927199367670048503, guid: d6c08152ea172d147a59e2891bcffdea, type: 3}
-  startTile: {fileID: -927199367670048503, guid: a1df9455fa456e2438800ed96a640477, type: 3}
-  exitTile: {fileID: 3204614964171211429, guid: ef71e3ec3e8fd87429f2bf1eed8d6a9c, type: 3}
-  environmentTiles:
-  - {fileID: -927199367670048503, guid: 1198d8470423f1d42a52db281d394a88, type: 3}
-  - {fileID: -927199367670048503, guid: 24abf5b0ac409a84593e0afa0e3b7f55, type: 3}
-  - {fileID: -927199367670048503, guid: 58ac81c1b8764ce41ac972f9b4f0482b, type: 3}
-  - {fileID: -927199367670048503, guid: 7d86cc91f68492a408173d5e5e7aa034, type: 3}
-  - {fileID: -927199367670048503, guid: afd0cd7bb40b9b34687be9eaa2dba49b, type: 3}
+  tileSets:
+  - roadStraight: {fileID: -927199367670048503, guid: 355ae750ffa048944a06b7035218160c, type: 3}
+    roadTileCorner: {fileID: -927199367670048503, guid: 244f0e0d3a9397241a523beb97ea38e6, type: 3}
+    tileEmpty: {fileID: -927199367670048503, guid: d6c08152ea172d147a59e2891bcffdea, type: 3}
+    startTile: {fileID: -927199367670048503, guid: a1df9455fa456e2438800ed96a640477, type: 3}
+    exitTile: {fileID: 3204614964171211429, guid: ef71e3ec3e8fd87429f2bf1eed8d6a9c, type: 3}
+    environmentTiles:
+    - {fileID: -927199367670048503, guid: 58ac81c1b8764ce41ac972f9b4f0482b, type: 3}
+    - {fileID: -927199367670048503, guid: 24abf5b0ac409a84593e0afa0e3b7f55, type: 3}
+    - {fileID: -927199367670048503, guid: 1198d8470423f1d42a52db281d394a88, type: 3}
+    - {fileID: -927199367670048503, guid: 7d86cc91f68492a408173d5e5e7aa034, type: 3}
+    - {fileID: -927199367670048503, guid: afd0cd7bb40b9b34687be9eaa2dba49b, type: 3}
+  - roadStraight: {fileID: 8662416897284126347, guid: ad39e6e855caca842b7b48671a4efeb3, type: 3}
+    roadTileCorner: {fileID: 2570060012619518569, guid: 4efe6eb21ab636046b38527a11cf18c2, type: 3}
+    tileEmpty: {fileID: 1663153972955160336, guid: 3ee54abbff4bb634a95b23f6a4e9b51d, type: 3}
+    startTile: {fileID: 395088549496600322, guid: 61426e51023e562438b8b6161af6cce9, type: 3}
+    exitTile: {fileID: 4262181391715087873, guid: 06f2f1a397ab5c3459f75064515717ee, type: 3}
+    environmentTiles:
+    - {fileID: 8174735938602449775, guid: 056660c9be3904d4b8843c25592bea57, type: 3}
+    - {fileID: 44700123550794370, guid: b519b828e5de6724fb876dda753b9b21, type: 3}
+    - {fileID: 5052415451188546995, guid: a4278b9bd87143d4987dc5982762a880, type: 3}
+    - {fileID: 8552611257788071318, guid: 7091b64f5da9fee41ad3481e87acf129, type: 3}
+    - {fileID: 3756874470408517773, guid: 78576d26f085c53468b3d29b2b122bdf, type: 3}
+  debugForceTileSet: 0
+  debugTileSetIndex: 1
   animate: 1
 --- !u!1001 &2091127321
 PrefabInstance:

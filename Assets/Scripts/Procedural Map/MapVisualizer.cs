@@ -5,6 +5,18 @@ using Random = UnityEngine.Random;
 
 namespace SVS.ChessMaze
 {
+    [System.Serializable]
+    public class TileSet
+    {
+        public GameObject roadStraight;
+        public GameObject roadTileCorner;
+        public GameObject tileEmpty;
+        public GameObject startTile;
+        public GameObject exitTile;
+
+        public GameObject[] environmentTiles;
+    }
+
     public class MapVisualizer : MonoBehaviour
     {
         private Transform parent;
@@ -17,8 +29,14 @@ namespace SVS.ChessMaze
         public GameObject[] towerPrefabs;
         public float towerYOffset = 0.0f;
 
-        public GameObject roadStraight, roadTileCorner, tileEmpty, startTile, exitTile;
-        public GameObject[] environmentTiles;
+        [Header("Tile Sets")]
+        public TileSet[] tileSets;
+
+        [Header("Debug / Testing")]
+        [SerializeField] private bool debugForceTileSet = false;
+        [SerializeField] private int debugTileSetIndex = 0;
+
+        private TileSet currentTileSet;
 
         Dictionary<Vector3, GameObject> dictionaryOfObstacles = new Dictionary<Vector3, GameObject>();
         private readonly List<GameObject> extraObjects = new List<GameObject>();
@@ -29,6 +47,27 @@ namespace SVS.ChessMaze
         private void Awake()
         {
             parent = this.transform;
+
+            if (tileSets != null && tileSets.Length > 0)
+            {
+                int index;
+
+                if (debugForceTileSet)
+                {
+                    index = Mathf.Clamp(debugTileSetIndex, 0, tileSets.Length - 1);
+                }
+                else
+                {
+                    index = Random.Range(0, tileSets.Length); // [0, length)
+                }
+
+                currentTileSet = tileSets[index];
+                Debug.Log($"MapVisualizer: wybrany TileSet index = {index}");
+            }
+            else
+            {
+                Debug.LogWarning("MapVisualizer: Brak skonfigurowanych tileSets.");
+            }
         }
 
         public void VisualizeMap(MapGrid grid, MapData data, bool visualizeUsingPrefabs)
@@ -83,7 +122,10 @@ namespace SVS.ChessMaze
                     switch (cell.ObjectType)
                     {
                         case CellObjectType.Empty:
-                            CreateIndicator(position, tileEmpty);
+                            if (currentTileSet != null && currentTileSet.tileEmpty != null)
+                            {
+                                CreateIndicator(position, currentTileSet.tileEmpty);
+                            }
                             break;
                         case CellObjectType.Road:
                             if (data.path.Count > 0)
@@ -91,6 +133,13 @@ namespace SVS.ChessMaze
                                 previousDirection = GetDirectionOfPreviousCell(position, data);
                                 nextDirection = GetDicrectionOfNextCell(position, data);
                             }
+
+                            if (currentTileSet == null)
+                                break;
+
+                            var roadStraight = currentTileSet.roadStraight;
+                            var roadTileCorner = currentTileSet.roadTileCorner;
+
                             if (previousDirection == Direction.Up && nextDirection == Direction.Right || previousDirection == Direction.Right && nextDirection == Direction.Up)
                             {
                                 CreateIndicator(position, roadTileCorner, Quaternion.Euler(0, 90, 0));
@@ -118,46 +167,51 @@ namespace SVS.ChessMaze
 
                             break;
                         case CellObjectType.Obstacle:
-                            int randomIndex = Random.Range(0, environmentTiles.Length);
-                            CreateIndicator(position, environmentTiles[randomIndex]);
+                            if (currentTileSet != null && currentTileSet.environmentTiles != null && currentTileSet.environmentTiles.Length > 0)
+                            {
+                                int randomIndex = Random.Range(0, currentTileSet.environmentTiles.Length);
+                                CreateIndicator(position, currentTileSet.environmentTiles[randomIndex]);
+                            }
                             break;
                         case CellObjectType.Start:
+                            if (currentTileSet == null || currentTileSet.startTile == null)
+                                break;
+
                             if (data.path.Count > 0)
                             {
                                 nextDirection = GetDirectionFromVectors(data.path[0], position);
-
                             }
                             if (nextDirection == Direction.Right || nextDirection == Direction.Left)
                             {
-                                CreateIndicator(position, startTile, Quaternion.Euler(0, 90, 0));
+                                CreateIndicator(position, currentTileSet.startTile, Quaternion.Euler(0, 90, 0));
                             }
                             else
                             {
-                                CreateIndicator(position, startTile);
+                                CreateIndicator(position, currentTileSet.startTile);
                             }
-
                             break;
                         case CellObjectType.Exit:
+                            if (currentTileSet == null || currentTileSet.exitTile == null)
+                                break;
                             if (data.path.Count > 0)
                             {
                                 previousDirection = GetDirectionOfPreviousCell(position, data);
                                 switch (previousDirection)
                                 {
                                     case Direction.Right:
-                                        CreateIndicator(position, exitTile, Quaternion.Euler(0, 90, 0));
+                                        CreateIndicator(position, currentTileSet.exitTile, Quaternion.Euler(0, 90, 0));
                                         break;
                                     case Direction.Left:
-                                        CreateIndicator(position, exitTile, Quaternion.Euler(0, -90, 0));
+                                        CreateIndicator(position, currentTileSet.exitTile, Quaternion.Euler(0, -90, 0));
                                         break;
                                     case Direction.Down:
-                                        CreateIndicator(position, exitTile, Quaternion.Euler(0, 180, 0));
+                                        CreateIndicator(position, currentTileSet.exitTile, Quaternion.Euler(0, 180, 0));
                                         break;
                                     default:
-                                        CreateIndicator(position, exitTile);
+                                        CreateIndicator(position, currentTileSet.exitTile);
                                         break;
                                 }
                             }
-
                             break;
                         default:
                             break;

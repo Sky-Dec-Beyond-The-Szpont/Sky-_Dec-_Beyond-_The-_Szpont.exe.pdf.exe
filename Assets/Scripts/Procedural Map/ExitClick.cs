@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class ExitClick : MonoBehaviour, IClickable
 {
-    public string nextSceneName = "SampleScene";
+    public string nextSceneName = "CardGameScene";
 
     public void OnClicked()
     {
