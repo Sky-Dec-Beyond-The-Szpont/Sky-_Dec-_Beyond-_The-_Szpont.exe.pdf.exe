@@ -1,0 +1,156 @@
+{
+  "cards": [
+    {
+      "id": "scout_1",
+      "name": "Szkop",
+      "attack": 1,
+      "health": 1,
+      "cost": 0,
+      "description": "Bardzo tani zwiadowca. Dobry na otwarcie."
+    },
+    {
+      "id": "piker_1",
+      "name": "Włócznik",
+      "attack": 1,
+      "health": 2,
+      "cost": 0,
+      "description": "Tani i nieco wytrzymalszy niż zwiadowca."
+    },
+    {
+      "id": "soldier_1",
+      "name": "Piechur",
+      "attack": 2,
+      "health": 2,
+      "cost": 1,
+      "description": "Solidna jednostka za niski koszt."
+    },
+    {
+      "id": "archer_1",
+      "name": "Łucznik",
+      "attack": 2,
+      "health": 1,
+      "cost": 1,
+      "description": "Tania karta do pierwszych wymian."
+    },
+    {
+      "id": "goblin_1",
+      "name": "Goblin",
+      "attack": 2,
+      "health": 2,
+      "cost": 1,
+      "description": "Uniwersalna, tania jednostka."
+    },
+    {
+      "id": "shieldbearer_1",
+      "name": "Tarczochron",
+      "attack": 1,
+      "health": 4,
+      "cost": 1,
+      "description": "Dużo HP za mały atak — blokuje pole."
+    },
+    {
+      "id": "recruit_1",
+      "name": "Rekrut",
+      "attack": 2,
+      "health": 3,
+      "cost": 1,
+      "description": "Dobry stosunek kosztu do wytrzymałości."
+    },
+    {
+      "id": "swordsman_1",
+      "name": "Miecznik",
+      "attack": 3,
+      "health": 2,
+      "cost": 2,
+      "description": "Dobry stosunek ataku do kosztu."
+    },
+    {
+      "id": "apprentice_1",
+      "name": "Czeladnik Maga",
+      "attack": 2,
+      "health": 3,
+      "cost": 2,
+      "description": "Wszechstronna karta na średni start."
+    },
+    {
+      "id": "venom_1",
+      "name": "Jadowity",
+      "attack": 3,
+      "health": 2,
+      "cost": 2,
+      "description": "Szybki nacisk na wagę, dobrze usuwa słabe cele."
+    },
+    {
+      "id": "thief_1",
+      "name": "Złodziej",
+      "attack": 3,
+      "health": 1,
+      "cost": 2,
+      "description": "Kruche, ale zadaje szybkie obrażenia."
+    },
+    {
+      "id": "mage_1",
+      "name": "Mag",
+      "attack": 3,
+      "health": 3,
+      "cost": 2,
+      "description": "Uniwersalny atak z przyzwoitą wytrzymałością."
+    },
+    {
+      "id": "knight_1",
+      "name": "Rycerz",
+      "attack": 4,
+      "health": 4,
+      "cost": 3,
+      "description": "Zrównoważona, mocna karta za średni koszt."
+    },
+    {
+      "id": "sapper_1",
+      "name": "Saper",
+      "attack": 4,
+      "health": 2,
+      "cost": 3,
+      "description": "Dobra wymiana ataku/kosztu, przydatny do nacisku."
+    },
+    {
+      "id": "ranger_1",
+      "name": "Strażnik",
+      "attack": 2,
+      "health": 5,
+      "cost": 3,
+      "description": "Dobre ciało do blokowania silniejszych zagrań."
+    },
+    {
+      "id": "bruiser_1",
+      "name": "Kłusownik",
+      "attack": 5,
+      "health": 4,
+      "cost": 4,
+      "description": "Duży atak jak na swój koszt — groźny, ale podatny."
+    },
+    {
+      "id": "tank_1",
+      "name": "Taran",
+      "attack": 2,
+      "health": 8,
+      "cost": 4,
+      "description": "Bardzo dużo HP, niski atak — dobry do kontroli pola."
+    },
+    {
+      "id": "assassin_1",
+      "name": "Zabójca",
+      "attack": 6,
+      "health": 2,
+      "cost": 5,
+      "description": "Wysoki atak, niski HP — groźny, ale ryzykowny."
+    },
+    {
+      "id": "elemental_1",
+      "name": "Żywiołak",
+      "attack": 4,
+      "health": 5,
+      "cost": 4,
+      "description": "Stabilna karta średniego kosztu."
+    }
+  ]
+}
