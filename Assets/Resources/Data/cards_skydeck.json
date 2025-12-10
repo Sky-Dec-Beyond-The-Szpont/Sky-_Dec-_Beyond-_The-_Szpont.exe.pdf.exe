@@ -1,0 +1,634 @@
+{
+  "cards": [
+    {
+      "id": "adder",
+      "name": "Żmij Szpontocizny",
+      "attack": 1,
+      "health": 1,
+      "cost": 2,
+      "description": "Atak 1, obrona 1. Mały gad, wielki szpont w oczach przeciwnika.",
+      "imageName": "adder"
+    },
+    {
+      "id": "alpha",
+      "name": "Alfa Szpontowej Sfory",
+      "attack": 1,
+      "health": 2,
+      "cost": 4,
+      "description": "Atak 1, obrona 2. Gdy zawyje, cały szpontowy pokład milknie.",
+      "imageName": "alpha"
+    },
+    {
+      "id": "amalgam",
+      "name": "Amalgamat Szpontowy",
+      "attack": 3,
+      "health": 3,
+      "cost": 2,
+      "description": "Atak 3, obrona 3. Trochę wszystkiego, dużo szpontu.",
+      "imageName": "amalgam"
+    },
+    {
+      "id": "amoeba",
+      "name": "Ameblobłona Szpontu",
+      "attack": 1,
+      "health": 2,
+      "cost": 2,
+      "description": "Atak 1, obrona 2. Rozlewa się po planszy jak rozlany szpont-koktajl.",
+      "imageName": "amoeba"
+    },
+    {
+      "id": "worker_ant",
+      "name": "Mrówczy Szponter",
+      "attack": 1,
+      "health": 2,
+      "cost": 1,
+      "description": "Atak 1, obrona 2. Niewielki, lecz robi całą brudną szpont-robotę.",
+      "imageName": "worker_ant"
+    },
+    {
+      "id": "ant_queen",
+      "name": "Królowa Szpontek",
+      "attack": 1,
+      "health": 3,
+      "cost": 2,
+      "description": "Atak 1, obrona 3. Rządzi rojem jak kapitan rządzi szpontem.",
+      "imageName": "ant_queen"
+    },
+    {
+      "id": "bat",
+      "name": "Nietoperz NadSzczelinowy",
+      "attack": 2,
+      "health": 1,
+      "cost": 4,
+      "description": "Atak 2, obrona 1. Lata pomiędzy szpontami jakby znał każdy zakamarek pokładu.",
+      "imageName": "bat"
+    },
+    {
+      "id": "beaver",
+      "name": "Bobrowy SzpontoTamaż",
+      "attack": 1,
+      "health": 4,
+      "cost": 2,
+      "description": "Atak 1, obrona 4. Z szpontów zbuduje tamę lepszą niż z desek.",
+      "imageName": "beaver"
+    },
+    {
+      "id": "bee",
+      "name": "Pszczoła Szpontowa",
+      "attack": 1,
+      "health": 1,
+      "cost": 0,
+      "description": "Atak 1, obrona 1. Brzęczy dokładnie na częstotliwości wkurzania przeciwnika.",
+      "imageName": "bee"
+    },
+    {
+      "id": "beehive",
+      "name": "Szponto-Ul",
+      "attack": 0,
+      "health": 2,
+      "cost": 1,
+      "description": "Atak 0, obrona 2. Z pozoru spokojny, w środku czysty szpont-chaos.",
+      "imageName": "beehive"
+    },
+    {
+      "id": "bloodhound",
+      "name": "Krwiochart Pokładowy",
+      "attack": 2,
+      "health": 3,
+      "cost": 2,
+      "description": "Atak 2, obrona 3. Wywęszy każdy szpontowy problem na planszy.",
+      "imageName": "bloodhound"
+    },
+    {
+      "id": "bullfrog",
+      "name": "Ropucha Szpontowa",
+      "attack": 1,
+      "health": 2,
+      "cost": 1,
+      "description": "Atak 1, obrona 2. Skacze między szpontami jak po kamieniach.",
+      "imageName": "bullfrog"
+    },
+    {
+      "id": "caged_wolf",
+      "name": "Zaklęty Wilk w Szponcie",
+      "attack": 0,
+      "health": 6,
+      "cost": 2,
+      "description": "Atak 0, obrona 6. Uwięziony w kratownicy szpontów, czeka na swój moment.",
+      "imageName": "caged_wolf"
+    },
+    {
+      "id": "cat",
+      "name": "Szpontowy Kocur",
+      "attack": 0,
+      "health": 1,
+      "cost": 1,
+      "description": "Atak 0, obrona 1. Śpi na najcieplejszym szponcie w okolicy.",
+      "imageName": "cat"
+    },
+    {
+      "id": "undead_cat",
+      "name": "Nieumarły Szpont-Kiciuś",
+      "attack": 3,
+      "health": 6,
+      "cost": 1,
+      "description": "Atak 3, obrona 6. Zużył już wszystkie dziewięć żyć, ale szpont dalej trzyma.",
+      "imageName": "undead_cat"
+    },
+    {
+      "id": "cockroach",
+      "name": "Karaluch Nieszpontowalny",
+      "attack": 1,
+      "health": 1,
+      "cost": 4,
+      "description": "Atak 1, obrona 1. Przeżyje sztorm, pożar i remont szpontu.",
+      "imageName": "cockroach"
+    },
+    {
+      "id": "coyote",
+      "name": "Kojot Szpontoser",
+      "attack": 2,
+      "health": 1,
+      "cost": 4,
+      "description": "Atak 2, obrona 1. Wyje w rytmie skrzypiących desek.",
+      "imageName": "coyote"
+    },
+    {
+      "id": "the_daus",
+      "name": "Kloc Dzwonno-Szpontowy",
+      "attack": 2,
+      "health": 2,
+      "cost": 2,
+      "description": "Atak 2, obrona 2. Gdy dzwoni, cała talia słyszy szpontowy alarm.",
+      "imageName": "the_daus"
+    },
+    {
+      "id": "tail",
+      "name": "Odrzucony Szpont-Ogon",
+      "attack": 0,
+      "health": 2,
+      "cost": 0,
+      "description": "Atak 0, obrona 2. Część karty, o którą wszyscy potykają się na pokładzie.",
+      "imageName": "tail"
+    },
+    {
+      "id": "elk",
+      "name": "Łoś NadSzczelinowy",
+      "attack": 2,
+      "health": 4,
+      "cost": 2,
+      "description": "Atak 2, obrona 4. Biegnie po szpontach jak po leśnej ścieżce.",
+      "imageName": "elk"
+    },
+    {
+      "id": "elk_fawn",
+      "name": "Łoszak Szpontu",
+      "attack": 1,
+      "health": 1,
+      "cost": 1,
+      "description": "Atak 1, obrona 1. Jeszcze nie wie, że szponty bywają śliskie.",
+      "imageName": "elk_fawn"
+    },
+    {
+      "id": "field_mice",
+      "name": "Polne Szponciury",
+      "attack": 2,
+      "health": 2,
+      "cost": 2,
+      "description": "Atak 2, obrona 2. Znikają w każdym szparowaniu szpontu.",
+      "imageName": "field_mice"
+    },
+    {
+      "id": "geck",
+      "name": "Gekon BezSzpontowy",
+      "attack": 1,
+      "health": 1,
+      "cost": 0,
+      "description": "Atak 1, obrona 1. Wejdzie wszędzie, byle było ciepło i drewniano.",
+      "imageName": "geck"
+    },
+    {
+      "id": "black_goat",
+      "name": "Czarna Koza Szpontowa",
+      "attack": 0,
+      "health": 1,
+      "cost": 1,
+      "description": "Atak 0, obrona 1. Idealna do podejrzanie korzystnych poświęceń.",
+      "imageName": "black_goat"
+    },
+    {
+      "id": "grizzly",
+      "name": "Sztormowy Grizzly",
+      "attack": 4,
+      "health": 6,
+      "cost": 3,
+      "description": "Atak 4, obrona 6. Gdy wchodzi, nawet szponty trzeszczą głośniej.",
+      "imageName": "grizzly"
+    },
+    {
+      "id": "child_13",
+      "name": "Dziecię Trzynastego Sztormu",
+      "attack": 0,
+      "health": 1,
+      "cost": 1,
+      "description": "Atak 0, obrona 1. Ma więcej tajemnic niż szpar w pokładzie.",
+      "imageName": "child_13"
+    },
+    {
+      "id": "kingfisher",
+      "name": "Zimorodek PodSzkłapowy",
+      "attack": 1,
+      "health": 1,
+      "cost": 1,
+      "description": "Atak 1, obrona 1. Nurkuje między szpontami jak w falach.",
+      "imageName": "kingfisher"
+    },
+    {
+      "id": "corpse_maggots",
+      "name": "Trupie Szpont-Larwy",
+      "attack": 1,
+      "health": 2,
+      "cost": 5,
+      "description": "Atak 1, obrona 2. Gdy coś padnie pod szpontem, one już tam są.",
+      "imageName": "corpse_maggots"
+    },
+    {
+      "id": "magpie",
+      "name": "Sroka Szpontograb",
+      "attack": 1,
+      "health": 1,
+      "cost": 2,
+      "description": "Atak 1, obrona 1. Znajdzie każdy błyszczący żeton w talii.",
+      "imageName": "magpie"
+    },
+    {
+      "id": "mantis",
+      "name": "Bogomolka Dwuszpontna",
+      "attack": 1,
+      "health": 1,
+      "cost": 1,
+      "description": "Atak 1, obrona 1. Uderza tam, gdzie szpont jest najsłabszy.",
+      "imageName": "mantis"
+    },
+    {
+      "id": "mantis_god",
+      "name": "Bóg TrójSzpontny",
+      "attack": 1,
+      "health": 1,
+      "cost": 1,
+      "description": "Atak 1, obrona 1. Jedna karta, trzy razy więcej kłopotu.",
+      "imageName": "mantis_god"
+    },
+    {
+      "id": "mole",
+      "name": "Kret PodSzpontowy",
+      "attack": 0,
+      "health": 4,
+      "cost": 1,
+      "description": "Atak 0, obrona 4. Zna wszystkie tunele pod Twoim pokładem.",
+      "imageName": "mole"
+    },
+    {
+      "id": "mole_man",
+      "name": "Przedwieczny Kret Szpontu",
+      "attack": 0,
+      "health": 6,
+      "cost": 1,
+      "description": "Atak 0, obrona 6. Pamięta czasy, gdy szpont był jeszcze drzewem.",
+      "imageName": "mole_man"
+    },
+    {
+      "id": "moose_buck",
+      "name": "Łoś TaranoSzpont",
+      "attack": 3,
+      "health": 7,
+      "cost": 3,
+      "description": "Atak 3, obrona 7. Po jego szarży zostają tylko drzazgi.",
+      "imageName": "moose_buck"
+    },
+    {
+      "id": "strange_larva",
+      "name": "Dziwna Szpont-Larwa",
+      "attack": 0,
+      "health": 3,
+      "cost": 1,
+      "description": "Atak 0, obrona 3. Wygląda niewinnie, ale szpont się jej boi.",
+      "imageName": "strange_larva"
+    },
+    {
+      "id": "strange_pupa",
+      "name": "Dziwna Szpont-Poczwarka",
+      "attack": 0,
+      "health": 3,
+      "cost": 1,
+      "description": "Atak 0, obrona 3. Coś w niej tyka, jakby liczyła Twoje tury.",
+      "imageName": "strange_pupa"
+    },
+    {
+      "id": "mothman",
+      "name": "Szpontowy Ćmokról",
+      "attack": 7,
+      "health": 3,
+      "cost": 1,
+      "description": "Atak 7, obrona 3. Leci do światła, a potem do punktów zwycięstwa.",
+      "imageName": "mothman"
+    },
+    {
+      "id": "pack_mule",
+      "name": "Szpontowy Muł Bagażowy",
+      "attack": 0,
+      "health": 5,
+      "cost": 0,
+      "description": "Atak 0, obrona 5. Nosi na sobie więcej kart niż cały decklist.",
+      "imageName": "pack_mule"
+    },
+    {
+      "id": "opossum",
+      "name": "Opos Udający Trupa",
+      "attack": 1,
+      "health": 1,
+      "cost": 2,
+      "description": "Atak 1, obrona 1. Leży jak deska szpontu, ale gryźć potrafi.",
+      "imageName": "opossum"
+    },
+    {
+      "id": "river_otter",
+      "name": "Wydra Pokładowa",
+      "attack": 1,
+      "health": 1,
+      "cost": 1,
+      "description": "Atak 1, obrona 1. Ślizga się po szpontach jak po lodzie.",
+      "imageName": "river_otter"
+    },
+    {
+      "id": "ouroboros",
+      "name": "Szpont-Ouroboros",
+      "attack": 1,
+      "health": 1,
+      "cost": 2,
+      "description": "Atak 1, obrona 1. Wraca, ilekroć myślisz, że się go pozbyłeś.",
+      "imageName": "ouroboros"
+    },
+    {
+      "id": "pack_rat",
+      "name": "Szczur Zbieracz Szpontów",
+      "attack": 2,
+      "health": 2,
+      "cost": 2,
+      "description": "Atak 2, obrona 2. Zawsze ma coś w zanadrzu, zwykle śmieci.",
+      "imageName": "pack_rat"
+    },
+    {
+      "id": "porcupine",
+      "name": "Jeż Szpontokolcowy",
+      "attack": 1,
+      "health": 2,
+      "cost": 1,
+      "description": "Atak 1, obrona 2. Każdy atakujący wychodzi z dodatkową pamiątką.",
+      "imageName": "porcupine"
+    },
+    {
+      "id": "pronghorn",
+      "name": "Sarna Rozszpontowana",
+      "attack": 1,
+      "health": 3,
+      "cost": 2,
+      "description": "Atak 1, obrona 3. Biegnie bokiem, jakby unikała dziur w pokładzie.",
+      "imageName": "pronghorn"
+    },
+    {
+      "id": "rabbit",
+      "name": "Królik Zza Szpontu",
+      "attack": 0,
+      "health": 1,
+      "cost": 0,
+      "description": "Atak 0, obrona 1. Idealny do tanich sztuczek i drogich ofiar.",
+      "imageName": "rabbit"
+    },
+    {
+      "id": "rat_king",
+      "name": "Król Szczurzej Szponty",
+      "attack": 2,
+      "health": 1,
+      "cost": 2,
+      "description": "Atak 2, obrona 1. Rządzi wszystkimi, którzy mieszkają pod deskami.",
+      "imageName": "rat_king"
+    },
+    {
+      "id": "rattler",
+      "name": "Grzechotnik Pokładowy",
+      "attack": 3,
+      "health": 1,
+      "cost": 6,
+      "description": "Atak 3, obrona 1. Daje znać, zanim Cię ugryzie. Uprzejmy, ale śmiercionośny.",
+      "imageName": "rattler"
+    },
+    {
+      "id": "raven",
+      "name": "Kruk NadSzklisty",
+      "attack": 2,
+      "health": 3,
+      "cost": 2,
+      "description": "Atak 2, obrona 3. Kracze dokładnie wtedy, gdy dobierasz złą kartę.",
+      "imageName": "raven"
+    },
+    {
+      "id": "raven_egg",
+      "name": "Jajo Kruka Szpontowego",
+      "attack": 0,
+      "health": 2,
+      "cost": 1,
+      "description": "Atak 0, obrona 2. Cicha obietnica przyszłego kłopotu.",
+      "imageName": "raven_egg"
+    },
+    {
+      "id": "great_white",
+      "name": "Szponciarz Biały",
+      "attack": 4,
+      "health": 2,
+      "cost": 3,
+      "description": "Atak 4, obrona 2. Rekin, który nauczył się pływać po deskach.",
+      "imageName": "great_white"
+    },
+    {
+      "id": "skink",
+      "name": "Scynk Szpontowy",
+      "attack": 1,
+      "health": 2,
+      "cost": 1,
+      "description": "Atak 1, obrona 2. Gubi ogon szybciej niż Ty punkty życia.",
+      "imageName": "skink"
+    },
+    {
+      "id": "wriggling_tail",
+      "name": "Wijący Szpont-Ogon",
+      "attack": 0,
+      "health": 2,
+      "cost": 0,
+      "description": "Atak 0, obrona 2. Sam ogon, ale za to bardzo zajęty.",
+      "imageName": "wriggling_tail"
+    },
+    {
+      "id": "skunk",
+      "name": "Skunks Pokładowy",
+      "attack": 0,
+      "health": 3,
+      "cost": 1,
+      "description": "Atak 0, obrona 3. Zapach, który wypłasza nawet odważnych.",
+      "imageName": "skunk"
+    },
+    {
+      "id": "river_snapper",
+      "name": "Rzeczny Pancerz Szpontu",
+      "attack": 1,
+      "health": 6,
+      "cost": 2,
+      "description": "Atak 1, obrona 6. Twardy jak zardzewiała kotwica.",
+      "imageName": "river_snapper"
+    },
+    {
+      "id": "long_elk",
+      "name": "Długi Łoś Szparowy",
+      "attack": 1,
+      "health": 2,
+      "cost": 4,
+      "description": "Atak 1, obrona 2. Zajmuje więcej miejsca niż masz szpontu.",
+      "imageName": "long_elk"
+    },
+    {
+      "id": "sparrow",
+      "name": "Wróbel Szpontowy",
+      "attack": 1,
+      "health": 2,
+      "cost": 1,
+      "description": "Atak 1, obrona 2. Mały, ale głośno komentuje Twoje misplaye.",
+      "imageName": "sparrow"
+    },
+    {
+      "id": "bell_tentacle",
+      "name": "Macka DzwonoSzpontu",
+      "attack": 1,
+      "health": 3,
+      "cost": 2,
+      "description": "Atak 1, obrona 3. Dzwoni, gdy coś idzie bardzo źle.",
+      "imageName": "bell_tentacle"
+    },
+    {
+      "id": "card_tentacle",
+      "name": "Macka Kartoszponta",
+      "attack": 1,
+      "health": 1,
+      "cost": 1,
+      "description": "Atak 1, obrona 1. Wie, co masz w ręce, ale nie powie.",
+      "imageName": "card_tentacle"
+    },
+    {
+      "id": "mirror_tentacle",
+      "name": "Lustrzana Macka Szpontu",
+      "attack": 1,
+      "health": 3,
+      "cost": 1,
+      "description": "Atak 1, obrona 3. Odbija nie tylko obrazy, ale i błędy.",
+      "imageName": "mirror_tentacle"
+    },
+    {
+      "id": "squirrel",
+      "name": "Wiewiór Szpontowy",
+      "attack": 0,
+      "health": 1,
+      "cost": 0,
+      "description": "Atak 0, obrona 1. Fundament każdej dziwnej kombinacji.",
+      "imageName": "squirrel"
+    },
+    {
+      "id": "stoat",
+      "name": "Łasica Zrzędliwa",
+      "attack": 1,
+      "health": 3,
+      "cost": 1,
+      "description": "Atak 1, obrona 3. Komentuje każdy Twój ruch, zwykle krytycznie.",
+      "imageName": "stoat"
+    },
+    {
+      "id": "tail_feathers",
+      "name": "Piórowy Szpont-Ogon",
+      "attack": 0,
+      "health": 2,
+      "cost": 0,
+      "description": "Atak 0, obrona 2. Wygląda groźniej niż jest w rzeczywistości.",
+      "imageName": "tail_feathers"
+    },
+    {
+      "id": "furry_tail",
+      "name": "Futrzany Szpont-Ogon",
+      "attack": 0,
+      "health": 2,
+      "cost": 0,
+      "description": "Atak 0, obrona 2. Idealny do machania na pożegnanie przeciwnikowi.",
+      "imageName": "furry_tail"
+    },
+    {
+      "id": "wriggling_leg",
+      "name": "Wijąca Szpont-Noga",
+      "attack": 0,
+      "health": 2,
+      "cost": 0,
+      "description": "Atak 0, obrona 2. Gubi się między szpontami, ale walczy dzielnie.",
+      "imageName": "wriggling_leg"
+    },
+    {
+      "id": "urayuli",
+      "name": "Urayuli Przedszpontowy",
+      "attack": 7,
+      "health": 7,
+      "cost": 4,
+      "description": "Atak 7, obrona 7. Gdy wchodzi, cała plansza nagle robi się mała.",
+      "imageName": "urayuli"
+    },
+    {
+      "id": "turkey_vulture",
+      "name": "Sęp NadSzpontowy",
+      "attack": 3,
+      "health": 3,
+      "cost": 8,
+      "description": "Atak 3, obrona 3. Krąży nad Twoimi błędami tak długo, aż przegrasz.",
+      "imageName": "turkey_vulture"
+    },
+    {
+      "id": "warren",
+      "name": "Szpontowa Nora",
+      "attack": 0,
+      "health": 2,
+      "cost": 1,
+      "description": "Atak 0, obrona 2. Z niej zawsze coś wyskoczy, zwykle królik.",
+      "imageName": "warren"
+    },
+    {
+      "id": "wolf",
+      "name": "Wilk Szpontowy",
+      "attack": 3,
+      "health": 2,
+      "cost": 2,
+      "description": "Atak 3, obrona 2. Klasyk, który nigdy nie wychodzi z metagry.",
+      "imageName": "wolf"
+    },
+    {
+      "id": "wolf_cub",
+      "name": "Wilczek Pokładkowy",
+      "attack": 1,
+      "health": 1,
+      "cost": 1,
+      "description": "Atak 1, obrona 1. Mały dzisiaj, problematyczny jutro.",
+      "imageName": "wolf_cub"
+    },
+    {
+      "id": "ring_worm",
+      "name": "Szpontering Robak",
+      "attack": 0,
+      "health": 1,
+      "cost": 1,
+      "description": "Atak 0, obrona 1. Niewinny z wyglądu, psotny z natury.",
+      "imageName": "ring_worm"
+    }
+  ]
+}

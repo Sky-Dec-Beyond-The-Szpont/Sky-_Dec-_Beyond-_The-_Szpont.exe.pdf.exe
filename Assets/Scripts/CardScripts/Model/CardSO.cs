@@ -9,4 +9,5 @@ public class CardSO : ScriptableObject
     public int health;
     public int cost;
     [TextArea] public string description;
+    public Sprite artwork;
 }

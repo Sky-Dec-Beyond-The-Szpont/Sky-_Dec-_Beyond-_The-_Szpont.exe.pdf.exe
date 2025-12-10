@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d0b8b072b0778c44893a3c69e655aaa, type: 3}
+  m_Name: 1_DeckOpponent
+  m_EditorClassIdentifier: 
+  cardPool:
+  - {fileID: 11400000, guid: 3e6a4b50c40449c49820764c457c85b9, type: 2}
+  - {fileID: 11400000, guid: 94e8e0abae777a24c8fe10c0e0a2ef67, type: 2}
+  - {fileID: 11400000, guid: 8b8bc8d266c3fb6428bcdbb6a2b6f5b8, type: 2}
+  - {fileID: 11400000, guid: c0af2f5cfef7661409f83bdf6949b4da, type: 2}
+  - {fileID: 11400000, guid: 3f6896499cf108d48a3d57aa5e0ef4d7, type: 2}
+  - {fileID: 11400000, guid: 57ca683f463fd8a43b58efee0df7be33, type: 2}
+  - {fileID: 11400000, guid: 85eb194f02f74e542af9a27e37bd98d7, type: 2}
+  - {fileID: 11400000, guid: f214808b864aedc40bd2cfa2d72bf20e, type: 2}
+  - {fileID: 11400000, guid: e8657195916bb8843ab9c6a3ad6e3517, type: 2}
+  - {fileID: 11400000, guid: 7d7e4cfb7f5e09f4a8c9c0809ac066a0, type: 2}
+  - {fileID: 11400000, guid: 947daa820c5dd2c43a5e3504d2080a5e, type: 2}
+  - {fileID: 11400000, guid: 1b557fb5cb2571c4b9f41ed69d733ea0, type: 2}
+  defaultDeckSize: 22

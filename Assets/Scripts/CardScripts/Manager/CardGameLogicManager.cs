@@ -26,13 +26,15 @@ CardGameLogicManager : MonoBehaviour
 
     public int scalePoints = 0;
 
+    public int opponentIndex = 1;
+
     public void InitGame()
     {
         player = new PlayerModel("Player", slotCountPerSide);
         enemy = new PlayerModel("Enemy", slotCountPerSide);
 
-        player.deck = deckManager.CreateDeckFromDeckSO();
-        enemy.deck = deckManager.CreateDeckFromDeckSO();
+        player.deck = deckManager.CreateUserDeck();
+        enemy.deck = deckManager.CreateOpponentDeck(opponentIndex);
 
         DrawToHand(player, 4);
         DrawToHand(enemy, 4);
@@ -76,8 +78,8 @@ CardGameLogicManager : MonoBehaviour
         player = new PlayerModel("Player", slotCountPerSide);
         enemy = new PlayerModel("Enemy", slotCountPerSide);
 
-        player.deck = deckManager.CreateDeckFromDeckSO();
-        enemy.deck = deckManager.CreateDeckFromDeckSO();
+        player.deck = deckManager.CreateUserDeck();
+        enemy.deck = deckManager.CreateOpponentDeck(opponentIndex);
 
         DrawToHand(player, 4);
         DrawToHand(enemy, 4);
@@ -145,7 +147,7 @@ CardGameLogicManager : MonoBehaviour
 
     public bool DrawToHand(PlayerModel p, int n)
     {
-        if(p.hand.Count >= maxHand)
+        if (p.hand.Count >= maxHand)
         {
             return false;
         }
@@ -269,7 +271,7 @@ CardGameLogicManager : MonoBehaviour
             return true;
         }
 
-        if(scalePoints <= endGameScalePoints * (-1))
+        if (scalePoints <= endGameScalePoints * (-1))
         {
             return true;
         }

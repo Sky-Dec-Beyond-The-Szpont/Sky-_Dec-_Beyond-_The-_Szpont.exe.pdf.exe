@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce27bf682a40d4f498553577bbdc320a, type: 3}
+  m_Name: mothman
+  m_EditorClassIdentifier: Assembly-CSharp::CardSO
+  id: mothman
+  cardName: "Szpontowy \u0106mokr\xF3l"
+  attack: 4
+  health: 1
+  cost: 4
+  description: "Atak 7, obrona 3. Leci do \u015Bwiat\u0142a, a potem do punkt\xF3w
+    zwyci\u0119stwa."
+  artwork: {fileID: 0}

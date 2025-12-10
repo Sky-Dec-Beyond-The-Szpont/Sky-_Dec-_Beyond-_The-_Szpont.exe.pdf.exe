@@ -7,13 +7,30 @@ using UnityEngine;
 public class DeckManager : MonoBehaviour
 {
     [SerializeField]
-    private DeckSO deckSO;
+    private DeckSO playerDeckSO;
+    [SerializeField] private List<DeckSO> opponentDecks = new List<DeckSO>();
+
 
     [SerializeField]
     public int multiplier = 2;
 
+    public List<CardInstance> CreateUserDeck()
+    {
+        return CreateDeckFromDeckSO(playerDeckSO);
+    }
 
-    public List<CardInstance> CreateDeckFromDeckSO()
+    public List<CardInstance> CreateOpponentDeck(int deckIndex)
+    {
+        if (deckIndex < 0 || deckIndex >= opponentDecks.Count)
+        {
+            Debug.LogWarning($"Requested opponent deck index {deckIndex} is out of range.");
+            return new List<CardInstance>();
+        }
+
+        return CreateDeckFromDeckSO(opponentDecks[deckIndex]);
+    }
+
+    private List<CardInstance> CreateDeckFromDeckSO(DeckSO deckSO)
     {
         var list = new List<CardInstance>();
         if (deckSO == null)

@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce27bf682a40d4f498553577bbdc320a, type: 3}
+  m_Name: strange_larva
+  m_EditorClassIdentifier: Assembly-CSharp::CardSO
+  id: strange_larva
+  cardName: Dziwna Szpont-Larwa
+  attack: 2
+  health: 3
+  cost: 4
+  description: "Atak 0, obrona 3. Wygl\u0105da niewinnie, ale szpont si\u0119 jej
+    boi."
+  artwork: {fileID: 0}
