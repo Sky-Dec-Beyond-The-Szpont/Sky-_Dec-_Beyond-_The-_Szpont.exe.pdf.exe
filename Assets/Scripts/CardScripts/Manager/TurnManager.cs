@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public class TurnManager : MonoBehaviour
@@ -24,8 +25,6 @@ public class TurnManager : MonoBehaviour
 
     bool gameResetForAgentLearning = false;
 
-     
-
     void Start()
     {
         if (gameLogic == null)
@@ -34,7 +33,7 @@ public class TurnManager : MonoBehaviour
         if (enemyAgent == null)
             enemyAgent = FindFirstObjectByType<PlayCardAgent>();
 
-        if(soundManager == null)
+        if (soundManager == null)
             soundManager = FindFirstObjectByType<SoundManager>();
 
         if (gameLogic == null)
@@ -211,12 +210,20 @@ public class TurnManager : MonoBehaviour
         // Odczekaj wskazany czas
         yield return new WaitForSeconds(waitSeconds);
 
-        // Czekaj, aż użytkownik wciśnie spację
-        while (!Input.GetKeyDown(KeyCode.Space))
+        // Czekaj, aż użytkownik wciśnie przypisaną akcję (continueAction) LUB spację (fallback)
+        while (true)
         {
+            // fallback: spróbuj Keyboard.current (Input System). Działa tylko jeśli Input System jest aktywny.
+            if (Keyboard.current != null)
+            {
+                if (Keyboard.current.spaceKey.wasPressedThisFrame)
+                    break;
+            }
+
             yield return null;
         }
 
+        // Ładuj scenę
         SceneManager.LoadSceneAsync(sceneName);
     }
 

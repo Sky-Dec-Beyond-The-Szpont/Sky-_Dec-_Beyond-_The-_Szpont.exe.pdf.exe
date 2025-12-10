@@ -317,6 +317,7 @@ MonoBehaviour:
   turnNumber: 1
   endGameScalePoints: 10
   scalePoints: 0
+  opponentIndex: 0
 --- !u!1 &2559293584146588382
 GameObject:
   m_ObjectHideFlags: 0
@@ -2351,7 +2352,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e836c021184edf4db5124fec9f90b74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deckSO: {fileID: 11400000, guid: ea859a072192a874a90326892e9c58c0, type: 2}
+  playerDeckSO: {fileID: 11400000, guid: ea859a072192a874a90326892e9c58c0, type: 2}
+  opponentDecks:
+  - {fileID: 11400000, guid: bac25bd9e3298bd44af3fb001b7c1902, type: 2}
+  - {fileID: 11400000, guid: a614e324fed478b49820bacf2b84cf1c, type: 2}
+  - {fileID: 11400000, guid: aeef2a580e292c54f8b05bc94750f9ac, type: 2}
   multiplier: 2
 --- !u!1 &8197115927218727254
 GameObject:

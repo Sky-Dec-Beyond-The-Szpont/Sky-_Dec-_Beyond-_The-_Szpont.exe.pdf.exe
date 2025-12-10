@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce27bf682a40d4f498553577bbdc320a, type: 3}
+  m_Name: great_white
+  m_EditorClassIdentifier: Assembly-CSharp::CardSO
+  id: great_white
+  cardName: "Szponciarz Bia\u0142y"
+  attack: 4
+  health: 2
+  cost: 4
+  description: "Atak 4, obrona 2. Rekin, kt\xF3ry nauczy\u0142 si\u0119 p\u0142ywa\u0107
+    po deskach."
+  artwork: {fileID: 0}

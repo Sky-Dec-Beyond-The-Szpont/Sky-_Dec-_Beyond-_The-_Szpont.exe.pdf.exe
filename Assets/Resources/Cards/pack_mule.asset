@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce27bf682a40d4f498553577bbdc320a, type: 3}
+  m_Name: pack_mule
+  m_EditorClassIdentifier: Assembly-CSharp::CardSO
+  id: pack_mule
+  cardName: "Szpontowy Mu\u0142 Baga\u017Cowy"
+  attack: 0
+  health: 4
+  cost: 1
+  description: "Atak 0, obrona 5. Nosi na sobie wi\u0119cej kart ni\u017C ca\u0142y
+    decklist."
+  artwork: {fileID: 0}
