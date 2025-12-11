@@ -107,6 +107,12 @@ public class TowerClick : MonoBehaviour, IClickable
         Debug.Log($"TowerClick ({label}): za³adowano scenê wie¿y: {towerSceneName}");
     }
 
+    [ContextMenu("Debug Return From Tower")]
+    private void DebugReturnFromTower()
+    {
+        ReturnFromTower();
+    }
+
     /// <summary>
     /// Wo³asz to ze sceny wie¿y, gdy mini-poziom jest ukoñczony.
     /// </summary>

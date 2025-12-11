@@ -1942,7 +1942,7 @@ MonoBehaviour:
     - {fileID: 5052415451188546995, guid: a4278b9bd87143d4987dc5982762a880, type: 3}
     - {fileID: 8552611257788071318, guid: 7091b64f5da9fee41ad3481e87acf129, type: 3}
     - {fileID: 3756874470408517773, guid: 78576d26f085c53468b3d29b2b122bdf, type: 3}
-  debugForceTileSet: 0
+  debugForceTileSet: 1
   debugTileSetIndex: 1
   animate: 1
 --- !u!1001 &2091127321
