@@ -16,6 +16,9 @@ public enum AttackAnimationVariant
 
 public class CardView : MonoBehaviour
 {
+
+    [SerializeField] MeshRenderer meshRenderer;
+
     public CardInstance model;
 
     public TMP_Text nameTextTMP;
@@ -23,6 +26,13 @@ public class CardView : MonoBehaviour
     public TMP_Text healthTextTMP;
     public TMP_Text costTextTMP;
     public TMP_Text descriptionTextTMP;
+
+    MaterialPropertyBlock mpb;
+
+    void Awake()
+    {
+        mpb = new MaterialPropertyBlock();
+    }
 
     public void Setup(CardInstance instance)
     {
@@ -39,12 +49,21 @@ public class CardView : MonoBehaviour
         if (attackTextTMP != null) attackTextTMP.text = model.Attack.ToString();
         if (healthTextTMP != null) healthTextTMP.text = model.currentHealth.ToString();
         if (costTextTMP != null) costTextTMP.text = model.Cost.ToString();
+
+
     }
 
     public void SetCard(CardInstance data)
     {
         model = data;
         RefreshVisuals();
+
+        if(model.artwork != null)
+        {
+            meshRenderer.GetPropertyBlock(mpb);
+            mpb.SetTexture("_MainTex", model.artwork);
+            meshRenderer.SetPropertyBlock(mpb);
+        }
     }
 
     public void PlayDeathAnimation(Action onComplete)

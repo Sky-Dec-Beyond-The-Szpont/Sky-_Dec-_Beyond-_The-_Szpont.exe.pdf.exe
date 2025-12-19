@@ -19,4 +19,4 @@ MonoBehaviour:
   cost: 4
   description: "Atak 4, obrona 2. Rekin, kt\xF3ry nauczy\u0142 si\u0119 p\u0142ywa\u0107
     po deskach."
-  artwork: {fileID: 0}
+  artwork: {fileID: 2800000, guid: 2c851ef2406fd6a41b7eec60e87d876e, type: 3}

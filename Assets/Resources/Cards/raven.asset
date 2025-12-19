@@ -19,4 +19,4 @@ MonoBehaviour:
   cost: 3
   description: "Atak 2, obrona 3. Kracze dok\u0142adnie wtedy, gdy dobierasz z\u0142\u0105
     kart\u0119."
-  artwork: {fileID: 0}
+  artwork: {fileID: 2800000, guid: c24eb25b1d89ad945984fb3d4491d0c9, type: 3}

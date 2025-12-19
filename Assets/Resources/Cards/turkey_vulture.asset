@@ -19,4 +19,4 @@ MonoBehaviour:
   cost: 3
   description: "Atak 3, obrona 3. Kr\u0105\u017Cy nad Twoimi b\u0142\u0119dami tak
     d\u0142ugo, a\u017C przegrasz."
-  artwork: {fileID: 0}
+  artwork: {fileID: 2800000, guid: afe22159c08706648b2ae9fb06b30367, type: 3}

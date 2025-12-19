@@ -19,4 +19,4 @@ MonoBehaviour:
   cost: 4
   description: "Atak 0, obrona 3. Co\u015B w niej tyka, jakby liczy\u0142a Twoje
     tury."
-  artwork: {fileID: 0}
+  artwork: {fileID: 2800000, guid: 47e0d6681c739244d8a71c5435e9cd2b, type: 3}

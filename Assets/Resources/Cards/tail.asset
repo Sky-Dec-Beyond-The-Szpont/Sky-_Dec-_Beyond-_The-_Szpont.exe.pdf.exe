@@ -19,4 +19,4 @@ MonoBehaviour:
   cost: 3
   description: "Atak 0, obrona 2. Cz\u0119\u015B\u0107 karty, o kt\xF3r\u0105 wszyscy
     potykaj\u0105 si\u0119 na pok\u0142adzie."
-  artwork: {fileID: 0}
+  artwork: {fileID: 2800000, guid: 0f44ba61829f03d4fa8c47f00f4bc884, type: 3}

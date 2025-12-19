@@ -18,4 +18,4 @@ MonoBehaviour:
   health: 2
   cost: 4
   description: "Atak 1, obrona 2. Gdy zawyje, ca\u0142y szpontowy pok\u0142ad milknie."
-  artwork: {fileID: 0}
+  artwork: {fileID: 2800000, guid: 3ef81cf805b80d640b511d5bd4bc4198, type: 3}

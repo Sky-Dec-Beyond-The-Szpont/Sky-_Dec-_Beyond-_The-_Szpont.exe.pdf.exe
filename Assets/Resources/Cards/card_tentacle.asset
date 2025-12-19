@@ -18,4 +18,4 @@ MonoBehaviour:
   health: 1
   cost: 1
   description: "Atak 1, obrona 1. Wie, co masz w r\u0119ce, ale nie powie."
-  artwork: {fileID: 0}
+  artwork: {fileID: 2800000, guid: 10c1552d309ef1548898d89966044f58, type: 3}

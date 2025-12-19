@@ -19,4 +19,4 @@ MonoBehaviour:
   cost: 4
   description: "Atak 0, obrona 6. Pami\u0119ta czasy, gdy szpont by\u0142 jeszcze
     drzewem."
-  artwork: {fileID: 0}
+  artwork: {fileID: 2800000, guid: d1d19a8082611be469dce26773832d21, type: 3}

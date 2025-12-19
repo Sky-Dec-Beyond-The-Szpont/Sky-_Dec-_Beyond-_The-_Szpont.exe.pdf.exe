@@ -18,4 +18,4 @@ MonoBehaviour:
   health: 2
   cost: 1
   description: "Atak 1, obrona 2. Skacze mi\u0119dzy szpontami jak po kamieniach."
-  artwork: {fileID: 0}
+  artwork: {fileID: 2800000, guid: 57841e2add336b04785f2a76840c4ba9, type: 3}

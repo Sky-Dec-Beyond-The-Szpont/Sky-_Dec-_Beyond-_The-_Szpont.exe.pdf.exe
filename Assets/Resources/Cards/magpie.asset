@@ -19,4 +19,4 @@ MonoBehaviour:
   cost: 2
   description: "Atak 1, obrona 1. Znajdzie ka\u017Cdy b\u0142yszcz\u0105cy \u017Ceton
     w talii."
-  artwork: {fileID: 0}
+  artwork: {fileID: 2800000, guid: 1e738086aa33dfd42875d876d85a2bce, type: 3}

@@ -18,4 +18,4 @@ MonoBehaviour:
   health: 2
   cost: 2
   description: "Atak 0, obrona 2. Z niej zawsze co\u015B wyskoczy, zwykle kr\xF3lik."
-  artwork: {fileID: 0}
+  artwork: {fileID: 2800000, guid: 65999db4aca04934f9addc04e7f92a2f, type: 3}

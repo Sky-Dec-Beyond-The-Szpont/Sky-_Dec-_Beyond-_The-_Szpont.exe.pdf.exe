@@ -19,4 +19,4 @@ MonoBehaviour:
   cost: 4
   description: "Atak 2, obrona 1. Lata pomi\u0119dzy szpontami jakby zna\u0142 ka\u017Cdy
     zakamarek pok\u0142adu."
-  artwork: {fileID: 0}
+  artwork: {fileID: 2800000, guid: e314b7e64bc39934faa906868b2e4b63, type: 3}

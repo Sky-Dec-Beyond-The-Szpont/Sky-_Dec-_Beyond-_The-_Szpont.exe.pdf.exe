@@ -18,4 +18,4 @@ MonoBehaviour:
   health: 3
   cost: 2
   description: "Atak 3, obrona 3. Troch\u0119 wszystkiego, du\u017Co szpontu."
-  artwork: {fileID: 0}
+  artwork: {fileID: 2800000, guid: 55dbb09c3a55a7d47b710b145c739d54, type: 3}

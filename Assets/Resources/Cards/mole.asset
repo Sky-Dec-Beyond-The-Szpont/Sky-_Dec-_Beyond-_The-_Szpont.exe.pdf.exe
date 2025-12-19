@@ -18,4 +18,4 @@ MonoBehaviour:
   health: 4
   cost: 4
   description: "Atak 0, obrona 4. Zna wszystkie tunele pod Twoim pok\u0142adem."
-  artwork: {fileID: 0}
+  artwork: {fileID: 2800000, guid: 1697af72c5ead7847abb85853c2cec0d, type: 3}

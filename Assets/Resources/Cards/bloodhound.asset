@@ -18,4 +18,4 @@ MonoBehaviour:
   health: 3
   cost: 2
   description: "Atak 2, obrona 3. Wyw\u0119szy ka\u017Cdy szpontowy problem na planszy."
-  artwork: {fileID: 0}
+  artwork: {fileID: 2800000, guid: e136e09b7dae5ee49b4b4fd44f2a7c3b, type: 3}

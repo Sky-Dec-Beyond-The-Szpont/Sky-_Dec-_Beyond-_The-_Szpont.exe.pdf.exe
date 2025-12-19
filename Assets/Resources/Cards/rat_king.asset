@@ -19,4 +19,4 @@ MonoBehaviour:
   cost: 2
   description: "Atak 2, obrona 1. Rz\u0105dzi wszystkimi, kt\xF3rzy mieszkaj\u0105
     pod deskami."
-  artwork: {fileID: 0}
+  artwork: {fileID: 2800000, guid: 05171843a16748e48ac01ce62b27ff21, type: 3}

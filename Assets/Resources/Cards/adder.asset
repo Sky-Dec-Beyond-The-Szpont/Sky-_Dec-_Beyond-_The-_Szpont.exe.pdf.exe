@@ -18,4 +18,4 @@ MonoBehaviour:
   health: 1
   cost: 2
   description: "Atak 1, obrona 1. Ma\u0142y gad, wielki szpont w oczach przeciwnika."
-  artwork: {fileID: 0}
+  artwork: {fileID: 2800000, guid: 5b8a9d939ae82044fb00e192817bd270, type: 3}

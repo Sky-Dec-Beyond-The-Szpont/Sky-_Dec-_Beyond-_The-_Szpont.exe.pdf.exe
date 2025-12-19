@@ -18,4 +18,4 @@ MonoBehaviour:
   health: 4
   cost: 4
   description: "Atak 2, obrona 4. Biegnie po szpontach jak po le\u015Bnej \u015Bcie\u017Cce."
-  artwork: {fileID: 0}
+  artwork: {fileID: 2800000, guid: 47cb44d186e49014bb51d0e7cd9e1069, type: 3}

@@ -31,7 +31,7 @@ public class JsonToSOImporter : EditorWindow
     string outputFolder = "Assets/Resources/Cards";
 
     // Folder z grafikami wewn¹trz Resources (np. Assets/Resources/CardArt)
-    string artResourcesFolder = "CardArt";
+    string artResourcesFolder = "Assets/Resources/Cards/Card Images";
 
     [MenuItem("Sky Deck/Import Cards JSON to SOs")]
     static void Init()
@@ -52,6 +52,11 @@ public class JsonToSOImporter : EditorWindow
         if (GUILayout.Button("Importuj karty"))
         {
             Import();
+        }
+
+        if (GUILayout.Button("Do³aduj same obrazki do istniej¹cych assetów"))
+        {
+            LoadImagesToExistingAssets();
         }
     }
 
@@ -93,15 +98,15 @@ public class JsonToSOImporter : EditorWindow
             if (!string.IsNullOrEmpty(card.imageName))
             {
                 string resPath = artResourcesFolder + "/" + card.imageName; // np. "CardArt/adder"
-                Sprite sprite = Resources.Load<Sprite>(resPath);
+                Texture2D texture = Resources.Load<Texture2D>(resPath);
 
-                if (sprite == null)
+                if (texture == null)
                 {
                     Debug.LogWarning($"[Sky Deck] Brak sprite'a dla karty '{card.id}' w Resources path: {resPath}");
                 }
                 else
                 {
-                    so.artwork = sprite;
+                    so.artwork = texture;
                 }
             }
 
@@ -115,5 +120,64 @@ public class JsonToSOImporter : EditorWindow
         AssetDatabase.Refresh();
 
         Debug.Log($"[Sky Deck] DONE — zaimportowano {dataList.cards.Length} kart z JSON-a.");
+    }
+
+    void LoadImagesToExistingAssets()
+    {
+        if (!File.Exists(jsonPath))
+        {
+            Debug.LogError("Nie znaleziono pliku JSON: " + jsonPath);
+            return;
+        }
+
+        string jsonText = File.ReadAllText(jsonPath);
+        CardDataList dataList = JsonUtility.FromJson<CardDataList>(jsonText);
+
+        if (dataList == null || dataList.cards == null)
+        {
+            Debug.LogError("B³¹d parsowania JSON-a.");
+            return;
+        }
+
+        int assigned = 0;
+
+        foreach (var card in dataList.cards)
+        {
+            if (string.IsNullOrEmpty(card.id) || string.IsNullOrEmpty(card.imageName))
+                continue;
+
+            string assetPath = $"{outputFolder}/{card.id}.asset";
+            CardSO so = AssetDatabase.LoadAssetAtPath<CardSO>(assetPath);
+
+            if (so == null)
+            {
+                Debug.LogWarning($"[Sky Deck] Nie znaleziono assetu dla karty: {card.id}");
+                continue;
+            }
+
+            if (so.artwork != null)
+            {
+                // jeœli chcesz nadpisywaæ, usuñ ten if
+                continue;
+            }
+
+            string resPath = $"{artResourcesFolder}/{card.imageName}";
+            Texture2D texture = Resources.Load<Texture2D>(resPath);
+
+            if (texture == null)
+            {
+                Debug.LogWarning($"[Sky Deck] Brak tekstury PNG: {resPath}");
+                continue;
+            }
+
+            so.artwork = texture;
+            EditorUtility.SetDirty(so);
+            assigned++;
+        }
+
+        AssetDatabase.SaveAssets();
+        AssetDatabase.Refresh();
+
+        Debug.Log($"[Sky Deck] DONE — przypisano artwork do {assigned} kart.");
     }
 }

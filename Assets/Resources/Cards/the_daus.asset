@@ -19,4 +19,4 @@ MonoBehaviour:
   cost: 2
   description: "Atak 2, obrona 2. Gdy dzwoni, ca\u0142a talia s\u0142yszy szpontowy
     alarm."
-  artwork: {fileID: 0}
+  artwork: {fileID: 2800000, guid: 03715a95d388ff34aaeefca51f2f06cc, type: 3}

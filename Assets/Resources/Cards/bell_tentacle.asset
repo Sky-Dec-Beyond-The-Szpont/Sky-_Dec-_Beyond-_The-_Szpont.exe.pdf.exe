@@ -18,4 +18,4 @@ MonoBehaviour:
   health: 3
   cost: 2
   description: "Atak 1, obrona 3. Dzwoni, gdy co\u015B idzie bardzo \u017Ale."
-  artwork: {fileID: 0}
+  artwork: {fileID: 2800000, guid: 1fc7e7a67462f074e967fda1e299a6cd, type: 3}

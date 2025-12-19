@@ -19,4 +19,4 @@ MonoBehaviour:
   cost: 1
   description: "Atak 1, obrona 2. Ka\u017Cdy atakuj\u0105cy wychodzi z dodatkow\u0105
     pami\u0105tk\u0105."
-  artwork: {fileID: 0}
+  artwork: {fileID: 2800000, guid: 0b08722046e53a24da2f911c4097a2c0, type: 3}

@@ -19,4 +19,4 @@ MonoBehaviour:
   cost: 4
   description: "Atak 0, obrona 3. Wygl\u0105da niewinnie, ale szpont si\u0119 jej
     boi."
-  artwork: {fileID: 0}
+  artwork: {fileID: 2800000, guid: 7094e40e69c70534abbd360c1e46b401, type: 3}

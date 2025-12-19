@@ -19,4 +19,4 @@ MonoBehaviour:
   cost: 0
   description: "Atak 1, obrona 1. Brz\u0119czy dok\u0142adnie na cz\u0119stotliwo\u015Bci
     wkurzania przeciwnika."
-  artwork: {fileID: 0}
+  artwork: {fileID: 2800000, guid: 21af914bb91b4ba409c73de010d6dcc7, type: 3}

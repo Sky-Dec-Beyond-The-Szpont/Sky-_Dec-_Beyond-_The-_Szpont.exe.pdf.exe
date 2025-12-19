@@ -18,4 +18,4 @@ MonoBehaviour:
   health: 2
   cost: 1
   description: "Atak 0, obrona 2. Z pozoru spokojny, w \u015Brodku czysty szpont-chaos."
-  artwork: {fileID: 0}
+  artwork: {fileID: 2800000, guid: ff616ba3968ce054283ca759b78073de, type: 3}

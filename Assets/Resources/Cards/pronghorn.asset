@@ -18,4 +18,4 @@ MonoBehaviour:
   health: 3
   cost: 3
   description: "Atak 1, obrona 3. Biegnie bokiem, jakby unika\u0142a dziur w pok\u0142adzie."
-  artwork: {fileID: 0}
+  artwork: {fileID: 2800000, guid: bbd3a8c4ca24e554eb31709c84b17551, type: 3}

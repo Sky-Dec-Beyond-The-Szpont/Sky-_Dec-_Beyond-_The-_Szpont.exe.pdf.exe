@@ -19,4 +19,4 @@ MonoBehaviour:
   cost: 8
   description: "Atak 7, obrona 7. Gdy wchodzi, ca\u0142a plansza nagle robi si\u0119
     ma\u0142a."
-  artwork: {fileID: 0}
+  artwork: {fileID: 2800000, guid: 4870e884e9f22af41b5cdb008488529e, type: 3}

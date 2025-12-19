@@ -19,4 +19,4 @@ MonoBehaviour:
   cost: 2
   description: "Atak 1, obrona 2. Gdy co\u015B padnie pod szpontem, one ju\u017C
     tam s\u0105."
-  artwork: {fileID: 0}
+  artwork: {fileID: 2800000, guid: 5220ced91c3fd414f98b9218cf6c3e6d, type: 3}

@@ -19,4 +19,4 @@ MonoBehaviour:
   cost: 2
   description: "Atak 1, obrona 4. Z szpont\xF3w zbuduje tam\u0119 lepsz\u0105 ni\u017C
     z desek."
-  artwork: {fileID: 0}
+  artwork: {fileID: 2800000, guid: 17b5bb153ff254646bf98f56f5189ef2, type: 3}

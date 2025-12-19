@@ -18,4 +18,4 @@ MonoBehaviour:
   health: 4
   cost: 6
   description: "Atak 3, obrona 7. Po jego szar\u017Cy zostaj\u0105 tylko drzazgi."
-  artwork: {fileID: 0}
+  artwork: {fileID: 2800000, guid: 5f42da8e84bc2eb4ba66c05cd7297cff, type: 3}

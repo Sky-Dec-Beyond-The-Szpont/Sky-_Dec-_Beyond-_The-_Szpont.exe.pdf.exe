@@ -18,4 +18,4 @@ MonoBehaviour:
   health: 1
   cost: 1
   description: "Atak 1, obrona 1. Nurkuje mi\u0119dzy szpontami jak w falach."
-  artwork: {fileID: 0}
+  artwork: {fileID: 2800000, guid: b07d91937c5cceb4abcaf055c07638a2, type: 3}

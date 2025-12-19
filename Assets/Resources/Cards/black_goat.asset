@@ -18,4 +18,4 @@ MonoBehaviour:
   health: 1
   cost: 1
   description: "Atak 0, obrona 1. Idealna do podejrzanie korzystnych po\u015Bwi\u0119ce\u0144."
-  artwork: {fileID: 0}
+  artwork: {fileID: 2800000, guid: e8a34361c8e1dd146beb82982d10f20c, type: 3}

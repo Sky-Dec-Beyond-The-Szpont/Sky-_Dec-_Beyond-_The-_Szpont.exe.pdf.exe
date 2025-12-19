@@ -19,4 +19,4 @@ MonoBehaviour:
   cost: 1
   description: "Atak 1, obrona 1. Wejdzie wsz\u0119dzie, byle by\u0142o ciep\u0142o
     i drewniano."
-  artwork: {fileID: 0}
+  artwork: {fileID: 2800000, guid: a2d6049e985206245875dd9dc97c2477, type: 3}

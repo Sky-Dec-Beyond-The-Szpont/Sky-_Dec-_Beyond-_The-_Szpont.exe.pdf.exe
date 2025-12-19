@@ -18,4 +18,4 @@ MonoBehaviour:
   health: 3
   cost: 3
   description: "Atak 1, obrona 3. Komentuje ka\u017Cdy Tw\xF3j ruch, zwykle krytycznie."
-  artwork: {fileID: 0}
+  artwork: {fileID: 2800000, guid: e1bee4d5f605e8c4897112c9bbd9d962, type: 3}

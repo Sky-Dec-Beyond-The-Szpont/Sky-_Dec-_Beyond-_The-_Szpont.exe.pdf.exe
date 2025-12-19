@@ -18,4 +18,4 @@ MonoBehaviour:
   health: 3
   cost: 3
   description: "Atak 4, obrona 6. Gdy wchodzi, nawet szponty trzeszcz\u0105 g\u0142o\u015Bniej."
-  artwork: {fileID: 0}
+  artwork: {fileID: 2800000, guid: 9360f439b3c164042a55ae11f3f977d8, type: 3}

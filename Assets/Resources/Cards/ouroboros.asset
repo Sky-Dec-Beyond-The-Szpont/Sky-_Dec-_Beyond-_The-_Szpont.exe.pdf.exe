@@ -19,4 +19,4 @@ MonoBehaviour:
   cost: 1
   description: "Atak 1, obrona 1. Wraca, ilekro\u0107 my\u015Blisz, \u017Ce si\u0119
     go pozby\u0142e\u015B."
-  artwork: {fileID: 0}
+  artwork: {fileID: 2800000, guid: 3e48a53d82342874ca5a29b2db3cb0e7, type: 3}

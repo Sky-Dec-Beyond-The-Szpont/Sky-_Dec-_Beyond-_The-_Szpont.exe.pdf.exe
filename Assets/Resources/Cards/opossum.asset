@@ -19,4 +19,4 @@ MonoBehaviour:
   cost: 1
   description: "Atak 1, obrona 1. Le\u017Cy jak deska szpontu, ale gry\u017A\u0107
     potrafi."
-  artwork: {fileID: 0}
+  artwork: {fileID: 2800000, guid: 00489d10643df3140b4a6be86885126f, type: 3}

@@ -18,4 +18,4 @@ MonoBehaviour:
   health: 3
   cost: 2
   description: "Atak 1, obrona 3. Rz\u0105dzi rojem jak kapitan rz\u0105dzi szpontem."
-  artwork: {fileID: 0}
+  artwork: {fileID: 2800000, guid: 0c79c4e75a360f04c801bebe7f30f48c, type: 3}

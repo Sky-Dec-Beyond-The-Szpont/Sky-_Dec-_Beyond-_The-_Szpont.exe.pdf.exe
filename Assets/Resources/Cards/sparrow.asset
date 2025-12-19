@@ -19,4 +19,4 @@ MonoBehaviour:
   cost: 1
   description: "Atak 1, obrona 2. Ma\u0142y, ale g\u0142o\u015Bno komentuje Twoje
     misplaye."
-  artwork: {fileID: 0}
+  artwork: {fileID: 2800000, guid: 662b3cbe847e2db489af8ef1fe83ee52, type: 3}

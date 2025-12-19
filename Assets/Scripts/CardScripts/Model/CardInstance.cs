@@ -1,4 +1,5 @@
 using System;
+using UnityEngine;
 
 [Serializable]
 public class CardInstance
@@ -16,4 +17,5 @@ public class CardInstance
     public int Cost => card.cost;
     public string Name => card.cardName;
     public string Description => card.description;
+    public Texture2D artwork => card.artwork;
 }

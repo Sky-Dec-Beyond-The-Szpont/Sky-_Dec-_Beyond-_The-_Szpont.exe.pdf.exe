@@ -19,4 +19,4 @@ MonoBehaviour:
   cost: 1
   description: "Atak 0, obrona 5. Nosi na sobie wi\u0119cej kart ni\u017C ca\u0142y
     decklist."
-  artwork: {fileID: 0}
+  artwork: {fileID: 2800000, guid: da75c085c2a567343839e382cd822edf, type: 3}

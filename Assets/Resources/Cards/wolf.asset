@@ -18,4 +18,4 @@ MonoBehaviour:
   health: 2
   cost: 3
   description: "Atak 3, obrona 2. Klasyk, kt\xF3ry nigdy nie wychodzi z metagry."
-  artwork: {fileID: 0}
+  artwork: {fileID: 2800000, guid: 32320cfd25442e7488bd3ad46193bd08, type: 3}

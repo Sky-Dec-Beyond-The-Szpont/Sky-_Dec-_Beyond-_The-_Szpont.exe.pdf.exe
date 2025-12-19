@@ -19,4 +19,4 @@ MonoBehaviour:
   cost: 4
   description: "Atak 0, obrona 6. Uwi\u0119ziony w kratownicy szpont\xF3w, czeka
     na sw\xF3j moment."
-  artwork: {fileID: 0}
+  artwork: {fileID: 2800000, guid: 644819894aeaaee4f83f72617b3286e8, type: 3}

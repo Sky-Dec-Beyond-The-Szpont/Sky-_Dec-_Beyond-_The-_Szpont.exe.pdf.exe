@@ -19,4 +19,4 @@ MonoBehaviour:
   cost: 1
   description: "Atak 1, obrona 2. Niewielki, lecz robi ca\u0142\u0105 brudn\u0105
     szpont-robot\u0119."
-  artwork: {fileID: 0}
+  artwork: {fileID: 2800000, guid: 588d30d21a951994492a55fc613d78fc, type: 3}

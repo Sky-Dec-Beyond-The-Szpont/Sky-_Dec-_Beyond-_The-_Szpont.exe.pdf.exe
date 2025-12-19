@@ -19,4 +19,4 @@ MonoBehaviour:
   cost: 4
   description: "Atak 7, obrona 3. Leci do \u015Bwiat\u0142a, a potem do punkt\xF3w
     zwyci\u0119stwa."
-  artwork: {fileID: 0}
+  artwork: {fileID: 2800000, guid: 4f25761e62b2c66498ac5453b4b8f046, type: 3}
