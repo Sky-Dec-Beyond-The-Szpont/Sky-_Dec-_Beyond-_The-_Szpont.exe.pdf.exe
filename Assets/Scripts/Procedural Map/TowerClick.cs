@@ -41,6 +41,8 @@ public class TowerClick : MonoBehaviour, IClickable
         pathFromTowerToExit = fromTowerToExit;
     }
 
+    private List<GameObject> baseSceneRoots = new();
+
     // u¿yje ExitClick
     public List<Vector3> GetPathFromTowerToExit() => pathFromTowerToExit;
     public PlayerMover GetPlayer() => player;
@@ -75,37 +77,42 @@ public class TowerClick : MonoBehaviour, IClickable
         if (isTowerSceneLoaded)
             return;
 
-        // blokujemy sterowanie graczem podczas sceny wie¿y
         if (player != null)
             player.enabled = false;
 
-        StartCoroutine(LoadTowerSceneAdditive());
+        StartCoroutine(LoadTowerSceneAdditive_WithTransition());
     }
 
-    private IEnumerator LoadTowerSceneAdditive()
+    private IEnumerator LoadTowerSceneAdditive_WithTransition()
     {
-        AsyncOperation op = SceneManager.LoadSceneAsync(towerSceneName, LoadSceneMode.Additive);
-        while (!op.isDone)
+        if (LevelLoader.Instance == null)
+        {
+            Debug.LogError("Brak LevelLoader.Instance w scenie. Upewnij siê, ¿e LevelLoader jest w scenie bazowej.");
+            yield break;
+        }
+
+        // fade + load additive
+        LevelLoader.Instance.LoadSceneAdditiveWithTransition(towerSceneName);
+
+        // czekamy a¿ scena faktycznie siê pojawi
+        while (!SceneManager.GetSceneByName(towerSceneName).IsValid() ||
+               !SceneManager.GetSceneByName(towerSceneName).isLoaded)
         {
             yield return null;
         }
 
         isTowerSceneLoaded = true;
 
-        // ustaw scenê wie¿y jako aktywn¹ (UI, EventSystem itd.)
         Scene towerScene = SceneManager.GetSceneByName(towerSceneName);
-        if (towerScene.IsValid())
-        {
-            SceneManager.SetActiveScene(towerScene);
-        }
+        SceneManager.SetActiveScene(towerScene);
 
         if (baseCamera != null)
-        {
             baseCamera.enabled = false;
-        }
 
-        Debug.Log($"TowerClick ({label}): za³adowano scenê wie¿y: {towerSceneName}");
+        LevelLoader.Instance.PlayFadeIn();
+        Debug.Log($"TowerClick ({label}): za³adowano scenê wie¿y z przejœciem: {towerSceneName}");
     }
+
 
     [ContextMenu("Debug Return From Tower")]
     private void DebugReturnFromTower()
@@ -126,33 +133,41 @@ public class TowerClick : MonoBehaviour, IClickable
 
     private IEnumerator UnloadTowerSceneAndReturn()
     {
+        // 1) Fade OUT (animacja przejœcia) przed powrotem
+        if (LevelLoader.Instance != null)
+        {
+            LevelLoader.Instance.transition.SetTrigger("Start");
+            yield return new WaitForSeconds(LevelLoader.Instance.transitionTime);
+        }
+        else
+        {
+            Debug.LogWarning("UnloadTowerSceneAndReturn: brak LevelLoader.Instance – powrót bez animacji.");
+        }
+
+        // 2) Unload sceny wie¿y
         Scene towerScene = SceneManager.GetSceneByName(towerSceneName);
         if (towerScene.IsValid())
         {
             AsyncOperation op = SceneManager.UnloadSceneAsync(towerScene);
             while (!op.isDone)
-            {
                 yield return null;
-            }
         }
 
         isTowerSceneLoaded = false;
 
-        // przywracamy scenê bazow¹ jako aktywn¹
+        // 3) Przywrócenie sceny bazowej, kamery i sterowania
         if (baseScene.IsValid())
-        {
             SceneManager.SetActiveScene(baseScene);
-        }
 
         if (baseCamera != null)
-        {
             baseCamera.enabled = true;
-        }
 
-        // ponownie w³¹czamy sterowanie graczem
         if (player != null)
             player.enabled = true;
 
+        LevelLoader.Instance.PlayFadeIn();
+
         Debug.Log($"TowerClick ({label}): powrót z wie¿y do sceny bazowej.");
     }
+
 }
