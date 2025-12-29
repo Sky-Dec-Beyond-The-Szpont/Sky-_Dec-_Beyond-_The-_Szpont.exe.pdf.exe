@@ -12,7 +12,10 @@ public class CorridorFirstDungeonGenerator : SimpleRandomWalkMapGenerator
     public float roomPercent = 0.8f;
 
     [SerializeField] private GameObject playerPrefab;
+    [SerializeField] private GameObject treasurePrefab;
+    [SerializeField] private Transform objectsParent;
     private GameObject playerInstance;
+    private GameObject treasureInstance;
 
     private Dictionary<Vector2Int, HashSet<Vector2Int>> roomsDictionary
         = new Dictionary<Vector2Int, HashSet<Vector2Int>>();
@@ -257,8 +260,10 @@ public class CorridorFirstDungeonGenerator : SimpleRandomWalkMapGenerator
 
         // Spawn gracza
         if (playerInstance == null)
-            playerInstance = Instantiate(playerPrefab, new Vector3(center.x, center.y, 0), Quaternion.identity);
+            playerInstance = Instantiate(playerPrefab, new Vector3(center.x, center.y, 0), Quaternion.identity, objectsParent);
         else
             playerInstance.transform.position = new Vector3(center.x, center.y, 0);
+
+        treasureInstance = Instantiate(treasurePrefab, new Vector3(center.x + 1, center.y, 0), Quaternion.identity, objectsParent);
     }
 }

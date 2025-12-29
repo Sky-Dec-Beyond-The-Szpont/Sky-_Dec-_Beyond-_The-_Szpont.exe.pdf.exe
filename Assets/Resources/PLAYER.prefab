@@ -179,6 +179,9 @@ MonoBehaviour:
   enemyLayer:
     serializedVersion: 2
     m_Bits: 8
+  treasureLayer:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!114 &5581613361509029559
 MonoBehaviour:
   m_ObjectHideFlags: 0

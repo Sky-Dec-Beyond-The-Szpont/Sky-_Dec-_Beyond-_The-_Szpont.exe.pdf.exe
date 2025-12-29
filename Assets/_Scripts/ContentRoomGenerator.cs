@@ -3,7 +3,12 @@ using UnityEngine;
 
 public class ContentRoomGenerator : MonoBehaviour
 {
+
+    [SerializeField] private Transform enemiesParent;
+    [SerializeField] private Transform itemsParent;
+
     [SerializeField] private GameObject[] enemyPrefabs;
+    [SerializeField] private GameObject treasurePrefab;
     [SerializeField] private GameObject[] itemPrefabs;
     [SerializeField] private int maxEnemiesPerRoom = 3;
     [SerializeField] private int maxItemsPerRoom = 2;
@@ -17,19 +22,20 @@ public class ContentRoomGenerator : MonoBehaviour
                                     bool spawnEnemies = true,
                                     bool spawnTreasure = false)
     {
+        //this.ClearRoom();
+
         this.roomFloor = roomFloor;
         this.roomFloorNoCorridor = roomFloorNoCorridor;
 
         ItemPlacementHelper placementHelper = new ItemPlacementHelper(roomFloor, roomFloorNoCorridor);
 
-        if(spawnTreasure && itemPrefabs.Length > 0)
+        if(spawnTreasure)
         {
             // Zak³adamy, ¿e ostatni prefab w itemPrefabs to skarb
-            GameObject treasurePrefab = itemPrefabs[itemPrefabs.Length - 1];
             Vector2Int size = Vector2Int.one;
             Vector2? pos = placementHelper.GetItemPlacementPosition(PlacementType.OpenSpace, 20, size, false);
             if(pos.HasValue)
-                Instantiate(treasurePrefab, new Vector3(pos.Value.x, pos.Value.y, 0), Quaternion.identity);
+                Instantiate(treasurePrefab, new Vector3(pos.Value.x, pos.Value.y, 0), Quaternion.identity, itemsParent);
         }
 
         if(spawnEnemies)
@@ -56,7 +62,7 @@ public class ContentRoomGenerator : MonoBehaviour
 
             if (position.HasValue)
             {
-                Instantiate(prefab, new Vector3(position.Value.x, position.Value.y, 0), Quaternion.identity);
+                Instantiate(prefab, new Vector3(position.Value.x, position.Value.y, 0), Quaternion.identity, itemsParent);
             }
         }
     }
@@ -79,8 +85,17 @@ public class ContentRoomGenerator : MonoBehaviour
 
             if (position.HasValue)
             {
-                Instantiate(prefab, new Vector3(position.Value.x, position.Value.y, 0), Quaternion.identity);
+                Instantiate(prefab, new Vector3(position.Value.x, position.Value.y, 0), Quaternion.identity, enemiesParent);
             }
         }
+    }
+
+    private void ClearRoom()
+    {
+        foreach (Transform child in enemiesParent)
+            Destroy(child.gameObject);
+
+        foreach (Transform child in itemsParent)
+            Destroy(child.gameObject);
     }
 }

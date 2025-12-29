@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -6,6 +7,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float _dashSpeed = 15f;
     [SerializeField] private float _dashDuration = 0.15f;
     [SerializeField] private float _dashCooldown = 0.4f;
+
+    public static TowerClick chosenTower = null;
 
     private Vector2 _movement;
     private Vector2 _facingDirection = Vector2.down; // domyœlny kierunek
@@ -19,6 +22,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float attackRange = 1f;
     [SerializeField] private int attackDamage = 1;
     [SerializeField] private LayerMask enemyLayer;
+    [SerializeField] private LayerMask treasureLayer;
 
     private void Awake()
     {
@@ -38,6 +42,7 @@ public class PlayerMovement : MonoBehaviour
 
         HandleDash();
         HandleAttack();
+        HandleInteraction();
     }
 
     private void FixedUpdate()
@@ -108,6 +113,67 @@ public class PlayerMovement : MonoBehaviour
             }
         }
     }
+
+    //private void HandleInteraction()
+    //{
+    //    if (InputManager.InteractionPressed)
+    //    {
+
+    //        Vector2 faceDir = _facingDirection;
+
+    //        Debug.Log("int direction = " + faceDir);
+
+    //        // RAYCAST W STRONE, W KTORA PATRZY GRACZ
+    //        RaycastHit2D hit = Physics2D.Raycast(transform.position, faceDir, attackRange, treasureLayer);
+
+    //        if (hit.collider != null)
+    //        {
+
+    //            Debug.Log("interakt");
+    //            Interactable hp = hit.collider.GetComponent<Interactable>();
+    //            //SceneManager.UnloadSceneAsync("SampleScene");
+    //            //SceneManager.UnloadSceneAsync("SampleScene");
+    //            //SceneManager.SetActiveScene(SceneManager.GetSceneByName("MapScene"));
+
+    //            chosenTower.ReturnFromTower();
+
+
+    //            //TowerClick.isTowerSceneLoaded = false; // func to go back from this scene to szpont os
+
+    //            //ContentRoomGenerator.ClearRoom();
+    //        }
+    //    }
+    //}
+
+    private void HandleInteraction()
+    {
+        if (InputManager.InteractionPressed)
+        {
+            Vector2 faceDir = _facingDirection;
+
+            RaycastHit2D hit = Physics2D.Raycast(
+                transform.position,
+                faceDir,
+                attackRange,
+                treasureLayer
+            );
+
+            if (hit.collider != null)
+            {
+                Debug.Log("Powrót z wie¿y");
+
+                if (TowerClick.chosenTower != null)
+                {
+                    TowerClick.chosenTower.ReturnFromTower();
+                }
+                else
+                {
+                    Debug.LogWarning("chosenTower == null – brak wie¿y do powrotu");
+                }
+            }
+        }
+    }
+
 }
 
 
