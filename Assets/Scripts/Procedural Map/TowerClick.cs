@@ -157,7 +157,10 @@ public class TowerClick : MonoBehaviour, IClickable
 
         // 3) Przywrócenie sceny bazowej, kamery i sterowania
         if (baseScene.IsValid())
+        {
             SceneManager.SetActiveScene(baseScene);
+            GameStateManager.Instance.SetState(GameState.Gameplay);
+        }
 
         if (baseCamera != null)
             baseCamera.enabled = true;

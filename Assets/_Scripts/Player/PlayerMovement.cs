@@ -8,7 +8,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float _dashDuration = 0.15f;
     [SerializeField] private float _dashCooldown = 0.4f;
 
-    public static TowerClick chosenTower = null;
+
+
 
     private Vector2 _movement;
     private Vector2 _facingDirection = Vector2.down; // domyœlny kierunek
@@ -31,6 +32,11 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+        if (GameStateManager.Instance.CurrentState != GameState.Gameplay)
+            return;
+
+
+
         // 1. Pobranie ruchu
         _movement = InputManager.Movement;
 
@@ -160,16 +166,10 @@ public class PlayerMovement : MonoBehaviour
 
             if (hit.collider != null)
             {
-                Debug.Log("Powrót z wie¿y");
 
-                if (TowerClick.chosenTower != null)
-                {
-                    TowerClick.chosenTower.ReturnFromTower();
-                }
-                else
-                {
-                    Debug.LogWarning("chosenTower == null – brak wie¿y do powrotu");
-                }
+                Debug.Log("Interakcja ? pokaz UI losowania");
+
+                GambaUI.Instance.Show();
             }
         }
     }
