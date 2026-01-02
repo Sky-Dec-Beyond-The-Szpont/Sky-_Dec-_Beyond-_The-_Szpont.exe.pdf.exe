@@ -8,6 +8,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float _dashDuration = 0.15f;
     [SerializeField] private float _dashCooldown = 0.4f;
 
+    [SerializeField] private GameObject slashPrefab;
+    [SerializeField] private float slashOffset = 0.6f;
+
 
 
 
@@ -32,6 +35,9 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+
+        if (GameStateManager.Instance == null )
+            GameStateManager.Instance.SetState(GameState.Gameplay);
         if (GameStateManager.Instance.CurrentState != GameState.Gameplay)
             return;
 
@@ -101,6 +107,8 @@ public class PlayerMovement : MonoBehaviour
 
             Vector2 attackDir = _facingDirection;
 
+            SpawnSlash(attackDir);
+
             Debug.Log("ATTACK direction = " + attackDir);
 
             // RAYCAST W STRONE, W KTORA PATRZY GRACZ
@@ -119,6 +127,21 @@ public class PlayerMovement : MonoBehaviour
             }
         }
     }
+
+    private void SpawnSlash(Vector2 dir)
+    {
+        Vector3 spawnPos = transform.position + (Vector3)(dir * slashOffset);
+
+        GameObject slash = Instantiate(slashPrefab, spawnPos, Quaternion.identity);
+
+        // Obrót slasha w stronê ataku
+        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+        slash.transform.rotation = Quaternion.Euler(0f, 0f, angle);
+
+        // Zniszcz po czasie animacji
+        Destroy(slash, 0.3f);
+    }
+
 
     //private void HandleInteraction()
     //{

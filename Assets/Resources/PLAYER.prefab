@@ -250,6 +250,8 @@ MonoBehaviour:
   _dashSpeed: 15
   _dashDuration: 0.15
   _dashCooldown: 0.4
+  slashPrefab: {fileID: 6179024468755186629, guid: d3128f7bf11bf024082df703ef0148e9, type: 3}
+  slashOffset: 1
   attackRange: 1
   attackDamage: 1
   enemyLayer:

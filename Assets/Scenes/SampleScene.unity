@@ -249,11 +249,14 @@ MonoBehaviour:
   itemsParent: {fileID: 1488965643}
   enemyPrefabs:
   - {fileID: 252230155742014530, guid: fd1e627c6a122ea49a6a9ccde2ee9b9a, type: 3}
-  treasurePrefab: {fileID: 3115246270809725779, guid: bfcdc55dc9718424b80973a0faf22a10, type: 3}
+  treasurePrefab: {fileID: 2124802016183351465, guid: d57e0d5296ac0fd43801f708895f80c1, type: 3}
   itemPrefabs:
-  - {fileID: 1420429152472748954, guid: 55353d44361540f459ae04a0f9fdb9bd, type: 3}
+  - {fileID: 6175570869111078692, guid: 8612533e042de864c90ab5e6664fd461, type: 3}
+  - {fileID: 1470786957403816922, guid: 9c1e04f69d173d94d89bab3ffbaf122f, type: 3}
+  - {fileID: 4965059263206247149, guid: 3d3743a33ef094b46859e1985a8d5132, type: 3}
+  - {fileID: 2088459808884941028, guid: 55990634e10c159468a7498f796174ff, type: 3}
   maxEnemiesPerRoom: 3
-  maxItemsPerRoom: 2
+  maxItemsPerRoom: 8
   placementIterations: 1
 --- !u!4 &220316201
 Transform:
@@ -607,6 +610,50 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &645069393
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 645069395}
+  - component: {fileID: 645069394}
+  m_Layer: 0
+  m_Name: GameStateManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &645069394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 645069393}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7f07c496f039a4439490b63adfd522c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameStateManager
+--- !u!4 &645069395
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 645069393}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -30.17608, y: -12.289, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -28228,7 +28275,7 @@ MonoBehaviour:
   corridorCount: 15
   roomPercent: 0.8
   playerPrefab: {fileID: 4973762088230425674, guid: a1a98257019d8524b91d2fcc191a7298, type: 3}
-  treasurePrefab: {fileID: 3115246270809725779, guid: bfcdc55dc9718424b80973a0faf22a10, type: 3}
+  treasurePrefab: {fileID: 2124802016183351465, guid: d57e0d5296ac0fd43801f708895f80c1, type: 3}
   objectsParent: {fileID: 1488965643}
 --- !u!4 &1562716936
 Transform:
@@ -28384,3 +28431,4 @@ SceneRoots:
   - {fileID: 220316201}
   - {fileID: 23640264}
   - {fileID: 1488965643}
+  - {fileID: 645069395}
