@@ -88,15 +88,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac6f6b53da8514641aaa9c54d86c5dbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CaseCell
-  _sprites:
-  - Sprites:
-    - {fileID: -3550299307783417834, guid: b766017530f64ae41a4194d132859ac7, type: 3}
-  - Sprites:
-    - {fileID: 21300000, guid: c7bf45f0ef95bed4491c5809fc6bf484, type: 3}
-  - Sprites:
-    - {fileID: 21300000, guid: 5915cdc174101e540b3349e21ee2cd74, type: 3}
-  _chances: 0a0000000a0000000a000000
-  _colors:
-  - {r: 1, g: 0.83964, b: 0, a: 0}
-  - {r: 1, g: 0, b: 0, a: 0}
-  - {r: 0, g: 0.091196775, b: 1, a: 0}
+  icon: {fileID: 3499019759334849994}

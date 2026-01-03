@@ -1,50 +1,38 @@
 using UnityEngine;
 using UnityEngine.UI;
-using System.Collections.Generic;
 
 public class CaseCell : MonoBehaviour
 {
-    [System.Serializable]
-    private class ListOfSprites
+    [SerializeField] private Image icon;
+
+    public CardSO Card { get; private set; }
+
+    public void Setup(CardSO card)
     {
-        public List<Sprite> Sprites;
+        Debug.Log("SETUP CELL: " + card.name);
+
+        //if (card.artwork == null)
+        //{
+        //    Debug.LogError($"CARD HAS NO ARTWORK: {card.name}");
+        //    icon.sprite = null;
+        //    icon.color = Color.magenta; // widoczny placeholder
+        //    return;
+        //}
+
+        Card = card;
+        icon.sprite = TextureToSprite.Convert(card.artwork);
     }
 
-    [SerializeField] private List<ListOfSprites> _sprites;
-    [SerializeField] private int[] _chances;
-    [SerializeField] private Color[] _colors;
-
-    public int SelectedIndex { get; private set; }
-    public Sprite SelectedSprite { get; private set; }
-
-    public void Setup()
+    public static class TextureToSprite
     {
-        SelectedIndex = Randomize();
-
-        SelectedSprite =
-            _sprites[SelectedIndex].Sprites[Random.Range(0, _sprites[SelectedIndex].Sprites.Count)];
-
-        GetComponent<Image>().sprite = SelectedSprite;
-
-        transform.parent.GetComponent<Image>().color = _colors[SelectedIndex];
-    }
-
-    private int Randomize()
-    {
-        int total = 0;
-        foreach (var c in _chances)
-            total += c;
-
-        int rand = Random.Range(0, total);
-        int current = 0;
-
-        for (int i = 0; i < _chances.Length; i++)
+        public static Sprite Convert(Texture2D texture)
         {
-            current += _chances[i];
-            if (rand < current)
-                return i;
+            return Sprite.Create(
+                texture,
+                new Rect(0, 0, texture.width, texture.height),
+                new Vector2(0.5f, 0.5f),
+                100f
+            );
         }
-
-        return _chances.Length - 1;
     }
 }

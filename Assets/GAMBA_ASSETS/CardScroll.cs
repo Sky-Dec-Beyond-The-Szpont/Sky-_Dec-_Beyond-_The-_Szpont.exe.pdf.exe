@@ -14,6 +14,9 @@ public class CardScroll : MonoBehaviour
 
     [SerializeField] private RectTransform drawPanel;
 
+    [SerializeField] private DeckSO opponentDeck;
+    [SerializeField] private DeckSO playerDeck;
+
 
 
     private readonly List<CaseCell> _cells = new List<CaseCell>();
@@ -23,7 +26,7 @@ public class CardScroll : MonoBehaviour
 
     private RectTransform _rect;
 
-    private void Awake()
+    private void Start()
     {
         _rect = GetComponent<RectTransform>();
         CreateCells();
@@ -31,14 +34,21 @@ public class CardScroll : MonoBehaviour
 
     private void CreateCells()
     {
+        _cells.Clear();
+
         for (int i = 0; i < cellsCount; i++)
         {
             var cell = Instantiate(cellPrefab, transform)
                 .GetComponentInChildren<CaseCell>();
 
+            CardSO randomCard =
+                opponentDeck.cardPool[UnityEngine.Random.Range(0, opponentDeck.cardPool.Length)];
+
+            cell.Setup(randomCard);
             _cells.Add(cell);
         }
     }
+
 
     public CaseCell GetCellAtCenter()
     {
@@ -79,11 +89,24 @@ public class CardScroll : MonoBehaviour
 
         _rect.anchoredPosition = new Vector2(scrollDistance, 0);
 
-        foreach (var cell in _cells)
-            cell.Setup();
-
         _speed = UnityEngine.Random.Range(4f, 5f);
         _isScrolling = true;
+    }
+
+
+    public void TransferCard(CardSO card)
+    {
+        // usuñ z decka przeciwnika
+        var opponentList = new List<CardSO>(opponentDeck.cardPool);
+        opponentList.Remove(card);
+        opponentDeck.cardPool = opponentList.ToArray();
+
+        // dodaj do decka gracza
+        var playerList = new List<CardSO>(playerDeck.cardPool);
+        playerList.Add(card);
+        playerDeck.cardPool = playerList.ToArray();
+
+        Debug.Log($"Przeniesiono kartê {card.name} do decka gracza");
     }
 
     private void Update()
@@ -101,10 +124,16 @@ public class CardScroll : MonoBehaviour
 
             CaseCell winCell = GetCellAtCenter();
 
+            CardSO wonCard = winCell.Card;
+
             Debug.Log("SCROLL FINISHED");
-            Debug.Log("WYGRANA:");
-            Debug.Log("Index: " + winCell.SelectedIndex);
-            Debug.Log("Sprite: " + winCell.SelectedSprite.name);
+            Debug.Log("WYGRANA KARTA:");
+            Debug.Log("Card: " + winCell.Card.name);
+            Debug.Log("Card: " + winCell.Card.artwork);
+
+            TransferCard(wonCard);
+
+
 
             //Time.timeScale = 0f;
 
