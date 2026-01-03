@@ -12,6 +12,10 @@ public class CardScroll : MonoBehaviour
     [SerializeField] private int cellsCount = 50;
     [SerializeField] private float scrollDistance = 600f;
 
+    [SerializeField] private RectTransform drawPanel;
+
+
+
     private readonly List<CaseCell> _cells = new List<CaseCell>();
 
     private float _speed;
@@ -35,6 +39,36 @@ public class CardScroll : MonoBehaviour
             _cells.Add(cell);
         }
     }
+
+    public CaseCell GetCellAtCenter()
+    {
+        // ŒRODEK drawPanel w WORLD SPACE
+        Vector3 panelCenterWorld =
+            drawPanel.TransformPoint(new Vector3(0f, 0f, 0f));
+
+        CaseCell closest = null;
+        float minDistance = float.MaxValue;
+
+        foreach (var cell in _cells)
+        {
+            RectTransform rect = cell.GetComponent<RectTransform>();
+
+            // ŒRODEK karty w WORLD SPACE
+            Vector3 cellCenterWorld =
+                rect.TransformPoint(rect.rect.center);
+
+            float distance = Mathf.Abs(cellCenterWorld.x - panelCenterWorld.x);
+
+            if (distance < minDistance)
+            {
+                minDistance = distance;
+                closest = cell;
+            }
+        }
+
+        return closest;
+    }
+
 
     public void Scroll()
     {
@@ -65,8 +99,18 @@ public class CardScroll : MonoBehaviour
             _speed = 0;
             _isScrolling = false;
 
+            CaseCell winCell = GetCellAtCenter();
+
             Debug.Log("SCROLL FINISHED");
+            Debug.Log("WYGRANA:");
+            Debug.Log("Index: " + winCell.SelectedIndex);
+            Debug.Log("Sprite: " + winCell.SelectedSprite.name);
+
+            //Time.timeScale = 0f;
+
+
             OnScrollFinished?.Invoke();
         }
+
     }
 }

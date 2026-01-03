@@ -14,14 +14,19 @@ public class CaseCell : MonoBehaviour
     [SerializeField] private int[] _chances;
     [SerializeField] private Color[] _colors;
 
+    public int SelectedIndex { get; private set; }
+    public Sprite SelectedSprite { get; private set; }
+
     public void Setup()
     {
-        int index = Randomize();
+        SelectedIndex = Randomize();
 
-        GetComponent<Image>().sprite =
-            _sprites[index].Sprites[Random.Range(0, _sprites[index].Sprites.Count)];
+        SelectedSprite =
+            _sprites[SelectedIndex].Sprites[Random.Range(0, _sprites[SelectedIndex].Sprites.Count)];
 
-        transform.parent.GetComponent<Image>().color = _colors[index];
+        GetComponent<Image>().sprite = SelectedSprite;
+
+        transform.parent.GetComponent<Image>().color = _colors[SelectedIndex];
     }
 
     private int Randomize()
