@@ -14,6 +14,8 @@ public class CorridorFirstDungeonGenerator : SimpleRandomWalkMapGenerator
     [SerializeField] private GameObject playerPrefab;
     [SerializeField] private GameObject treasurePrefab;
     [SerializeField] private Transform objectsParent;
+    private Vector2Int playerGridPosition;
+
     private GameObject playerInstance;
     private GameObject treasureInstance;
 
@@ -33,7 +35,18 @@ public class CorridorFirstDungeonGenerator : SimpleRandomWalkMapGenerator
     {
         GenerateDungeon();
         SpawnPlayer();
+        SpawnTreasureInFarthestRoom();
     }
+
+    private Vector2Int CalculateRoomCenter(HashSet<Vector2Int> room)
+    {
+        Vector2 sum = Vector2.zero;
+        foreach (var pos in room)
+            sum += (Vector2)pos;
+
+        return Vector2Int.RoundToInt(sum / room.Count);
+    }
+
 
     private void CorridorFirstGeneration()
     {
@@ -67,7 +80,9 @@ public class CorridorFirstDungeonGenerator : SimpleRandomWalkMapGenerator
             List<Vector2Int> roomCenters = new List<Vector2Int>(roomsDictionary.Keys);
 
             // 1️⃣ Pierwszy pokój (startowy) - bez wrogów
-            Vector2Int firstRoomPos = roomCenters[0];
+            Vector2Int firstRoomPos = roomCenters
+            .OrderBy(r => Vector2Int.Distance(r, startPos))
+            .First();
             HashSet<Vector2Int> firstRoom = roomsDictionary[firstRoomPos];
             HashSet<Vector2Int> firstRoomNoCorridor = new HashSet<Vector2Int>(firstRoom);
             firstRoomNoCorridor.ExceptWith(corridorPositions);
@@ -75,12 +90,13 @@ public class CorridorFirstDungeonGenerator : SimpleRandomWalkMapGenerator
             contentGenerator.GenerateRoomContent(firstRoom, firstRoomNoCorridor, spawnEnemies: false, spawnTreasure: false);
 
             // 2️⃣ Znajdź ostatni pokój (najdalej od startu)
-            Vector2Int lastRoomPos = GetFarthestRoom(roomCenters, startPos);
+            //Vector2Int lastRoomPos = GetFarthestRoom(roomCenters, startPos);
+            Vector2Int firstRoomCenter = CalculateRoomCenter(firstRoom);
+            Vector2Int lastRoomPos = GetFarthestRoom(roomCenters, playerGridPosition);
             HashSet<Vector2Int> lastRoom = roomsDictionary[lastRoomPos];
             HashSet<Vector2Int> lastRoomNoCorridor = new HashSet<Vector2Int>(lastRoom);
             lastRoomNoCorridor.ExceptWith(corridorPositions);
 
-            contentGenerator.GenerateRoomContent(lastRoom, lastRoomNoCorridor, spawnEnemies: true, spawnTreasure: true);
 
             // 3️⃣ Pozostałe pokoje - normalni wrogowie, brak skarbu
             foreach (var roomPos in roomCenters)
@@ -96,6 +112,32 @@ public class CorridorFirstDungeonGenerator : SimpleRandomWalkMapGenerator
             }
         }
     }
+
+    private void SpawnTreasureInFarthestRoom()
+    {
+        ContentRoomGenerator contentGenerator =
+            UnityEngine.Object.FindFirstObjectByType<ContentRoomGenerator>();
+
+        if (contentGenerator == null)
+            return;
+
+        Vector2Int farthestRoomPos =
+            GetFarthestRoomFromPlayer(roomsDictionary, playerGridPosition);
+
+        HashSet<Vector2Int> farthestRoom = roomsDictionary[farthestRoomPos];
+        HashSet<Vector2Int> farthestRoomNoCorridor =
+            new HashSet<Vector2Int>(farthestRoom);
+
+        farthestRoomNoCorridor.ExceptWith(corridorPositions);
+
+        contentGenerator.GenerateRoomContent(
+            farthestRoom,
+            farthestRoomNoCorridor,
+            spawnEnemies: true,
+            spawnTreasure: true
+        );
+    }
+
 
     private Vector2Int GetFarthestRoom(List<Vector2Int> rooms, Vector2Int start)
     {
@@ -239,6 +281,30 @@ public class CorridorFirstDungeonGenerator : SimpleRandomWalkMapGenerator
 
     }
 
+    private Vector2Int GetFarthestRoomFromPlayer(
+    Dictionary<Vector2Int, HashSet<Vector2Int>> rooms,
+    Vector2Int playerPos)
+    {
+        Vector2Int farthestRoomKey = rooms.Keys.First();
+        float maxDistance = 0f;
+
+        foreach (var kvp in rooms)
+        {
+            Vector2Int roomCenter = CalculateRoomCenter(kvp.Value);
+            float dist = Vector2.Distance(playerPos, roomCenter);
+
+            if (dist > maxDistance)
+            {
+                maxDistance = dist;
+                farthestRoomKey = kvp.Key;
+            }
+        }
+
+        return farthestRoomKey;
+    }
+
+
+
     private void SpawnPlayer()
     {
         if (playerPrefab == null)
@@ -257,6 +323,8 @@ public class CorridorFirstDungeonGenerator : SimpleRandomWalkMapGenerator
             sum += new Vector2(pos.x, pos.y);
 
         Vector2 center = sum / firstRoom.Count;
+
+        playerGridPosition = Vector2Int.RoundToInt(center);
 
         // Spawn gracza
         if (playerInstance == null)
