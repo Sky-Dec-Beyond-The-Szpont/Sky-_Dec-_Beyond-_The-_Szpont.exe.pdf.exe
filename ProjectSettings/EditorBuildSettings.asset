@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/IntroSccene.unity
     guid: 8d3681af72f9ab54ca70955968a64723
   - enabled: 1
+    path: Assets/Scenes/MenuScene.unity
+    guid: 960d3f7b2e36e1646b92a83033551e3b
+  - enabled: 1
     path: Assets/Scenes/MapScene.unity
     guid: fd6995e880273df4baef2486d2a54cf9
   - enabled: 1
@@ -17,6 +20,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/CardGameScene.unity
     guid: 69950b5b1bdef5245a35cffe267b3efd
+  - enabled: 1
+    path: Assets/Scenes/WinScene.unity
+    guid: 2c7bf80a1863f04449655aa495cc40ad
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

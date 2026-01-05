@@ -28412,7 +28412,10 @@ MonoBehaviour:
   cellsCount: 50
   scrollDistance: 600
   drawPanel: {fileID: 626587261924598437}
-  opponentDeck: {fileID: 11400000, guid: bac25bd9e3298bd44af3fb001b7c1902, type: 2}
+  opponentDecks:
+  - {fileID: 11400000, guid: bac25bd9e3298bd44af3fb001b7c1902, type: 2}
+  - {fileID: 11400000, guid: a614e324fed478b49820bacf2b84cf1c, type: 2}
+  - {fileID: 11400000, guid: aeef2a580e292c54f8b05bc94750f9ac, type: 2}
   playerDeck: {fileID: 11400000, guid: ea859a072192a874a90326892e9c58c0, type: 2}
 --- !u!1 &3106941438166724258
 GameObject:

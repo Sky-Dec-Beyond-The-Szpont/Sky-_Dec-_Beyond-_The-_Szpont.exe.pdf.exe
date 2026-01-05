@@ -103,6 +103,7 @@ public class PlayCardAgent : Agent
             else SetReward(-1f); // agent lose
         }
 
+        CheckForCardDeaths();
 
         RecordEpisodeOutcome(!playerWin);
         // mo¿esz dodaæ tutaj dodatkowe nagrody/penalty przed zakoñczeniem epizodu
@@ -115,11 +116,15 @@ public class PlayCardAgent : Agent
     {
         if (manager != null)
         {
+            //manager.ResetGame();
+
             controlledAgent = manager.enemy;
             lastScalePoints = manager.scalePoints;
         }
 
         totalStepsThisEpisode = 0;
+        actionsThisTurn = 0;
+        turnEnded = false;
     }
 
     private void CheckForCardDeaths()
@@ -131,17 +136,19 @@ public class PlayCardAgent : Agent
         int enemyDeadCount = enemyDeadSlots?.Count ?? 0;
 
         int newKillsByAgent = Mathf.Max(0, playerDeadCount - lastPlayerDeadSlotsCount);
-        int newLossesForAgent = Mathf.Max(0, enemyDeadCount - lastEnemyDeadSlotsCount);
 
         if (newKillsByAgent > 0)
         {
-            float killReward = 0.2f;
-            AddReward(killReward * newKillsByAgent);
+            // Tutaj musia³byœ mieæ dostêp do listy OSTATNIO zabitych kart, aby oceniæ ich si³ê.
+            // Jeœli nie masz, zwiêksz ogóln¹ nagrodê.
+            float baseKillReward = 1.0f; // Zwiêkszono z 0.3f
+            AddReward(baseKillReward * newKillsByAgent);
         }
 
+        int newLossesForAgent = Mathf.Max(0, enemyDeadCount - lastEnemyDeadSlotsCount);
         if (newLossesForAgent > 0)
         {
-            float lossPenalty = -0.1f;
+            float lossPenalty = -0.05f; // Zmniejszono z -0.1f
             AddReward(lossPenalty * newLossesForAgent);
         }
 
@@ -149,25 +156,79 @@ public class PlayCardAgent : Agent
         lastEnemyDeadSlotsCount = enemyDeadCount;
     }
 
-    private void CheckForBoardAdvantage()
+    public override void WriteDiscreteActionMask(IDiscreteActionMask actionMask)
     {
-        int agentBoardCount = 0;
-        int oppBoardCount = 0;
-        for (int i = 0; i < manager.slotCountPerSide; i++)
+        if (manager == null || controlledAgent == null)
         {
-            if (manager.enemy.tableSlots[i] != null) agentBoardCount++;
-            if (manager.player.tableSlots[i] != null) oppBoardCount++;
+            actionMask.SetActionEnabled(0, 1, false); // Blokuj zagrywanie kart
+            return;
         }
 
-        int diff = agentBoardCount - oppBoardCount;
-        if (diff > 0)
+        // --- Branch 0: Typ akcji (0: End Turn, 1: Play Card) ---
+        // Zawsze mo¿emy zakoñczyæ turê, wiêc 0 jest zawsze true.
+        // Sprawdzamy czy MO¯EMY zagraæ jak¹kolwiek kartê
+        bool canPlayAnyCard = false;
+        int freeSlotIndex = controlledAgent.GetFirstFreeSlotIndex();
+
+        // SprawdŸ czy mamy manê i miejsce na stole
+        if (freeSlotIndex != -1)
         {
-            AddReward(0.1f * diff);
+            foreach (var card in controlledAgent.hand)
+            {
+                if (card != null && card.Cost <= controlledAgent.currentSzpont)
+                {
+                    canPlayAnyCard = true;
+                    break;
+                }
+            }
         }
-        else if (diff < 0)
+
+        if (!canPlayAnyCard)
         {
-            AddReward(-0.05f * (-diff));
+            actionMask.SetActionEnabled(0, 1, false); // Wy³¹cz opcjê "Zagraj kartê"
         }
+
+
+        var hand = controlledAgent.hand;
+        for (int i = 0; i < manager.maxHand; i++)
+        {
+            bool isPlayable = false;
+            if (i < hand.Count)
+            {
+                var c = hand[i];
+                // Karta musi istnieæ ORAZ jej koszt musi byæ <= mana
+                if (c != null && c.Cost <= controlledAgent.currentSzpont)
+                {
+                    isPlayable = true;
+                }
+            }
+            actionMask.SetActionEnabled(1, i, isPlayable);
+        }
+
+
+        var slots = controlledAgent.tableSlots;
+        for (int i = 0; i < manager.slotCountPerSide; i++)
+        {
+            bool isSlotFree = (slots[i] == null);
+            actionMask.SetActionEnabled(2, i, isSlotFree);
+        }
+    }
+
+    private void CheckForBoardAdvantage()
+    {
+        float myTotalPower = 0;
+        float oppTotalPower = 0;
+
+        foreach (var card in manager.enemy.tableSlots)
+            if (card != null) myTotalPower += card.Attack + card.currentHealth;
+
+        foreach (var card in manager.player.tableSlots)
+            if (card != null) oppTotalPower += card.Attack + card.currentHealth;
+
+        float powerDiff = myTotalPower - oppTotalPower;
+
+        // Nagroda za posiadanie silniejszego sto³u
+        AddReward(powerDiff * 0.01f);
     }
 
     public void BeginTurn()
@@ -176,9 +237,8 @@ public class PlayCardAgent : Agent
         actionsThisTurn = 0;
         lastScalePoints = manager != null ? manager.scalePoints : 0;
 
-        if(manager != null)
+        if (manager != null)
         {
-            CheckForCardDeaths();
             CheckForBoardAdvantage();
         }
     }
@@ -256,6 +316,39 @@ public class PlayCardAgent : Agent
                 sensor.AddObservation(0f);
             }
         }
+
+        for (int i = 0; i < slots; i++)
+        {
+            var myCard = manager.enemy.tableSlots[i];   // Karta Agenta
+            var oppCard = manager.player.tableSlots[i]; // Karta Przeciwnika
+
+            float myAtt = myCard != null ? myCard.Attack : 0f;
+            float myHp = myCard != null ? myCard.currentHealth : 0f;
+
+            float oppAtt = oppCard != null ? oppCard.Attack : 0f;
+            float oppHp = oppCard != null ? oppCard.currentHealth : 0f;
+
+            // Logika: 1 = wygrywam, -1 = przegrywam, -2 = puste pole i dostanê obra¿enia
+            float laneStatus = 0f;
+
+            if (myCard != null && oppCard != null)
+            {
+                // Mamy starcie bezpoœrednie
+                if (myAtt >= oppHp) laneStatus = 1.0f;       // Zabijê go
+                else if (oppAtt >= myHp) laneStatus = -0.5f; // On mnie zabije (a ja jego nie)
+                                                             // Mo¿esz dodaæ 0f jeœli obaj prze¿yj¹ lub zgin¹ (wymiana)
+            }
+            else if (myCard == null && oppCard != null)
+            {
+                laneStatus = -1.0f; // Bardzo Ÿle: puste pole naprzeciw wroga!
+            }
+            else if (myCard != null && oppCard == null)
+            {
+                laneStatus = 0.5f; // Dobrze: atakujê wroga bezpoœrednio (lub jego bazê)
+            }
+
+            sensor.AddObservation(laneStatus);
+        }
     }
 
     public override void OnActionReceived(ActionBuffers actions)
@@ -323,11 +416,11 @@ public class PlayCardAgent : Agent
         int delta = manager.scalePoints - lastScalePoints;
         if (delta > 0)
         {
-            AddReward(delta * 0.02f);
+            AddReward(delta * 0.05f);
         }
         else if (delta < 0)
         {
-            AddReward(delta * 0.02f);
+            AddReward(delta * 0.05f);
         }
         lastScalePoints = manager.scalePoints;
     }

@@ -19,4 +19,4 @@ MonoBehaviour:
   cost: 1
   description: "Atak 0, obrona 2. Gubi si\u0119 mi\u0119dzy szpontami, ale walczy
     dzielnie."
-  artwork: {fileID: 0}
+  artwork: {fileID: 2800000, guid: bb9dfbfb813178140b4224479dec2d34, type: 3}

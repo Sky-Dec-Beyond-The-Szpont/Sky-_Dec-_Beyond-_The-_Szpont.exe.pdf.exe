@@ -257,6 +257,7 @@ MonoBehaviour:
   gameLogic: {fileID: 8654437240844658039}
   enemyAgent: {fileID: 2297559824680223333}
   soundManager: {fileID: 0}
+  confirmAction: {fileID: -561816398972752488, guid: 27af04234f48f9144851a26afb0283b1, type: 3}
   enemyDelay: 1
   roundEndDelay: 1
   isPlayerTurn: 1
@@ -2242,10 +2243,10 @@ MonoBehaviour:
   manager: {fileID: 8654437240844658039}
   turnManager: {fileID: 7562874521353355270}
   actionDelayRealtime: 0.5
-  maxActionsPerTurn: 1
-  playProbability: 0.5
+  maxActionsPerTurn: 4
+  playProbability: 0.9
   randomPlayRate: 0.5
-  randomSlotRate: 0.5
+  randomSlotRate: 0.2
   actionDelayNoise: 0.05
   rngSeed: -1
 --- !u!1 &7645952142273890579
@@ -2494,7 +2495,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BrainParameters:
-    VectorObservationSize: 51
+    VectorObservationSize: 55
     NumStackedVectorObservations: 1
     m_ActionSpec:
       m_NumContinuousActions: 0
@@ -2503,7 +2504,7 @@ MonoBehaviour:
     VectorActionDescriptions: []
     VectorActionSpaceType: 0
     hasUpgradedBrainParametersWithActionSpec: 1
-  m_Model: {fileID: 5022602860645237092, guid: 08e291a278bce6e46a3a76dd041937b8, type: 3}
+  m_Model: {fileID: 5022602860645237092, guid: 34e5d916c88856044877657c61e1ae85, type: 3}
   m_InferenceDevice: 0
   m_BehaviorType: 0
   m_BehaviorName: PlayCard
@@ -2597,6 +2598,8 @@ MonoBehaviour:
   szpontSpacing: 0.03
   szpontPrefab: {fileID: 4794651402266101168, guid: edd496f11c31cdc44ba6079ac0bdb98b, type: 3}
   axeObject: {fileID: 5077395103334818701}
+  gameLogicManager: {fileID: 8654437240844658039}
+  soundManager: {fileID: 4425340385101408719}
 --- !u!1001 &489091902509945113
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,7 +15,9 @@ public class CardScroll : MonoBehaviour
 
     [SerializeField] private RectTransform drawPanel;
 
-    [SerializeField] private DeckSO opponentDeck;
+    [SerializeField] private List<DeckSO> opponentDecks = new List<DeckSO>();
+    
+    private DeckSO opponentDeck;
     [SerializeField] private DeckSO playerDeck;
 
 
@@ -35,6 +38,10 @@ public class CardScroll : MonoBehaviour
     private void CreateCells()
     {
         _cells.Clear();
+
+        int opponentIndex = LevelLoader.Instance.GetCurrentOpponentIndex();
+
+        opponentDeck = opponentDecks.ElementAt(opponentIndex);
 
         for (int i = 0; i < cellsCount; i++)
         {

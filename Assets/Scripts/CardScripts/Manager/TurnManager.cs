@@ -1,29 +1,40 @@
 ﻿using System.Collections;
 using UnityEngine;
-using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
 
 public class TurnManager : MonoBehaviour
 {
     public CardGameLogicManager gameLogic;
     public PlayCardAgent enemyAgent;
     public SoundManager soundManager;
+    public GameInfo gameInfo;
+
+    public InputActionReference confirmAction;
 
     public float enemyDelay = 1.0f; // czas przerwy zanim AI zagra
     public float roundEndDelay = 1.0f; // czas przed przejściem do następnej rundy
     public bool isPlayerTurn = true;
 
     public float endEpisodeDelay = 1.0f; // ile czekamy przed restartem (real time)
-    public bool autoRestart = true;
-
 
     public bool resetGameToMap = true;
     public string mapSceneName = "MapScene";
+    public string winGameSceneName = "WinScene";
+    public string menuSceneName = "MenuScene";
 
-    private bool gameEnded = false;
-    public bool endEpisodeAfterBothTurns = true;
+    public bool gameResetForAgentLearning = true;
 
-    bool gameResetForAgentLearning = false;
+    private void OnEnable()
+    {
+        confirmAction?.action?.Enable();
+    }
+
+    private void OnDisable()
+    {
+        confirmAction?.action?.Disable();
+    }
+
 
     void Start()
     {
@@ -36,6 +47,9 @@ public class TurnManager : MonoBehaviour
         if (soundManager == null)
             soundManager = FindFirstObjectByType<SoundManager>();
 
+        if (gameInfo == null)
+            gameInfo = FindFirstObjectByType<GameInfo>();
+
         if (gameLogic == null)
         {
             Debug.LogError("TurnManager: brak referencji do GameLogicManager!");
@@ -46,7 +60,7 @@ public class TurnManager : MonoBehaviour
     public void EndPlayerTurn()
     {
 
-        if (gameEnded) return;
+        if (gameLogic.GameEnded()) return;
 
         soundManager.PlayEndTurn();
 
@@ -63,7 +77,6 @@ public class TurnManager : MonoBehaviour
     {
         if (gameLogic.GameEnded())
         {
-            gameEnded = true;
             NotifyGameEnded();
             yield break;
         }
@@ -99,21 +112,8 @@ public class TurnManager : MonoBehaviour
         // Jeżeli gra kończy się naturalnie -> obsłuż (tu zrobimy reset + dodatkowe nagrody)
         if (gameLogic.GameEnded())
         {
-            gameEnded = true;
             NotifyGameEnded();
             yield break;
-        }
-
-        if (endEpisodeAfterBothTurns && enemyAgent != null)
-        {
-            bool playerWin = gameLogic.scalePoints < 0;
-
-            if (endEpisodeDelay > 0f)
-                yield return new WaitForSeconds(endEpisodeDelay);
-
-            enemyAgent.FinishEpisode(playerWin, gameEnded: false);
-
-            enemyAgent.OnEpisodeBegin();
         }
 
         soundManager.PlayEndTurn();
@@ -122,6 +122,17 @@ public class TurnManager : MonoBehaviour
         Debug.Log("=== NEW PLAYER TURN ===");
 
         gameLogic.IncreaseSzpontAndRound();
+
+        if (gameLogic.turnNumber > 50)
+        {
+            // Remis / Przeciąganie
+            if (enemyAgent != null)
+            {
+                enemyAgent.EndEpisode();     // Koniec epizodu bez flagi win/lose
+            }
+            gameLogic.ResetGame(); // Reset planszy
+            yield break;
+        }
 
         DrawCardAnimated(playerTurn: true);
 
@@ -141,10 +152,11 @@ public class TurnManager : MonoBehaviour
         {
             bool cardDrawn = gameLogic.DrawToHand(gameLogic.player, 1);
 
-            if (!cardDrawn)
+            // ZABEZPIECZENIE: Sprawdzamy czy faktycznie mamy karty w ręce
+            if (!cardDrawn || gameLogic.player.hand.Count == 0)
                 return;
 
-            CardInstance drawn = gameLogic.player.hand[gameLogic.player.hand.Count - 1]; // ostatnio dodana
+            CardInstance drawn = gameLogic.player.hand[gameLogic.player.hand.Count - 1];
             if (gameLogic.playerHandVisualizer != null)
                 gameLogic.playerHandVisualizer.AnimateDrawToHand(drawn);
         }
@@ -152,7 +164,8 @@ public class TurnManager : MonoBehaviour
         {
             bool cardDrawn = gameLogic.DrawToHand(gameLogic.enemy, 1);
 
-            if (!cardDrawn)
+            // ZABEZPIECZENIE: To samo dla wroga. Jeśli Count == 0, wychodzimy.
+            if (!cardDrawn || gameLogic.enemy.hand.Count == 0)
                 return;
 
             CardInstance drawnEnemy = gameLogic.enemy.hand[gameLogic.enemy.hand.Count - 1];
@@ -163,7 +176,6 @@ public class TurnManager : MonoBehaviour
 
     public void NotifyGameEnded()
     {
-        if (!autoRestart) return;
         StartCoroutine(HandleEndOfGameCoroutine());
     }
 
@@ -171,18 +183,23 @@ public class TurnManager : MonoBehaviour
     {
         Debug.Log("TurnManager: Game ended. Handling end-of-episode...");
 
+        bool playerWin = gameLogic.scalePoints <= -gameLogic.endGameScalePoints;
+
+        if (gameInfo != null)
+        {
+            gameInfo.TriggerGameOver(playerWin);
+        }
+
         if (enemyAgent != null)
         {
-            bool playerWin = gameLogic.scalePoints <= -gameLogic.endGameScalePoints;
             enemyAgent.FinishEpisode(playerWin, gameEnded: true);
         }
 
         if (resetGameToMap)
         {
-            yield return StartCoroutine(WaitAndLoadSceneWithSpace(mapSceneName, 3f));
+            yield return StartCoroutine(WaitAndLoadSceneWithSpace(playerWin));
             yield break;
         }
-
 
         if (!gameResetForAgentLearning)
         {
@@ -199,32 +216,62 @@ public class TurnManager : MonoBehaviour
         if (enemyAgent != null) enemyAgent.OnEpisodeBegin();
 
         isPlayerTurn = true;
-        gameEnded = false;
         Debug.Log("TurnManager: New episode started (after natural game end).");
 
         yield break;
     }
 
-    private IEnumerator WaitAndLoadSceneWithSpace(string sceneName, float waitSeconds)
+    private IEnumerator WaitAndLoadSceneWithSpace(bool playerWin)
     {
         // Odczekaj wskazany czas
-        yield return new WaitForSeconds(waitSeconds);
+        yield return new WaitForSeconds(3.0f);
 
-        // Czekaj, aż użytkownik wciśnie przypisaną akcję (continueAction) LUB spację (fallback)
-        while (true)
+        bool pressed = false;
+
+        void OnPressed(InputAction.CallbackContext ctx)
         {
-            // fallback: spróbuj Keyboard.current (Input System). Działa tylko jeśli Input System jest aktywny.
-            if (Keyboard.current != null)
-            {
-                if (Keyboard.current.spaceKey.wasPressedThisFrame)
-                    break;
-            }
+            pressed = true;
+        }
 
+        confirmAction.action.performed += OnPressed;
+
+        while (!pressed)
+        {
             yield return null;
         }
 
-        // Ładuj scenę
-        SceneManager.LoadSceneAsync(sceneName);
+        confirmAction.action.performed -= OnPressed;
+
+
+        if (LevelLoader.Instance != null)
+        {
+            if (playerWin)
+            {
+                int currentIndex = LevelLoader.Instance.GetCurrentOpponentIndex();
+
+                if (currentIndex < 2)
+                {
+                    // WON (0 or 1) -> Advance and go back to Map
+                    Debug.Log("Player Won! Advancing to next opponent.");
+                    LevelLoader.Instance.AdvanceLevel();
+                    LevelLoader.Instance.LoadLevelByName(mapSceneName);
+                }
+                else
+                {
+                    // WON (2) -> Game Finished!
+                    Debug.Log("Player Defeated Final Boss! Loading End Scene.");
+                    LevelLoader.Instance.ResetProgress(); // Reset for next time
+                    LevelLoader.Instance.LoadLevelByName(winGameSceneName);
+                }
+            }
+            else
+            {
+                // LOST -> Game Over -> Main Menu
+                Debug.Log("Player Lost. Resetting progress and going to Menu.");
+                LevelLoader.Instance.ResetProgress();
+                LevelLoader.Instance.LoadLevelByName(menuSceneName);
+            }
+        }
     }
 
 }

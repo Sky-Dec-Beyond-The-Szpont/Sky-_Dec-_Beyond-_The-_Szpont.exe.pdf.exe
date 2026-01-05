@@ -20,8 +20,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 57ca683f463fd8a43b58efee0df7be33, type: 2}
   - {fileID: 11400000, guid: 85eb194f02f74e542af9a27e37bd98d7, type: 2}
   - {fileID: 11400000, guid: f214808b864aedc40bd2cfa2d72bf20e, type: 2}
-  - {fileID: 11400000, guid: e8657195916bb8843ab9c6a3ad6e3517, type: 2}
   - {fileID: 11400000, guid: 7d7e4cfb7f5e09f4a8c9c0809ac066a0, type: 2}
   - {fileID: 11400000, guid: f15455f76781ca040946e9e55a9a3cec, type: 2}
   - {fileID: 11400000, guid: 465d8ee3ea5dd264bbfc812c50d8a35c, type: 2}
-  defaultDeckSize: 22
+  defaultDeckSize: 18

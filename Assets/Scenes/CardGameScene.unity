@@ -1849,7 +1849,11 @@ PrefabInstance:
     - target: {fileID: 5917429377035479054, guid: f15dea7bd8dee2c499743236ebe16165, type: 3}
       propertyPath: m_Model
       value: 
-      objectReference: {fileID: 5022602860645237092, guid: a080dd0779b024743bc38abcda56439a, type: 3}
+      objectReference: {fileID: 5022602860645237092, guid: 39ed587029cb5a046b88c04336185443, type: 3}
+    - target: {fileID: 5917429377035479054, guid: f15dea7bd8dee2c499743236ebe16165, type: 3}
+      propertyPath: m_BrainParameters.VectorObservationSize
+      value: 55
+      objectReference: {fileID: 0}
     - target: {fileID: 6600199283959167156, guid: f15dea7bd8dee2c499743236ebe16165, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -1871,12 +1875,28 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7562874521353355270, guid: f15dea7bd8dee2c499743236ebe16165, type: 3}
+      propertyPath: gameInfo
+      value: 
+      objectReference: {fileID: 2568132850240164799}
+    - target: {fileID: 7562874521353355270, guid: f15dea7bd8dee2c499743236ebe16165, type: 3}
       propertyPath: autoRestart
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7562874521353355270, guid: f15dea7bd8dee2c499743236ebe16165, type: 3}
+      propertyPath: soundManager
+      value: 
+      objectReference: {fileID: 1690913290}
+    - target: {fileID: 7562874521353355270, guid: f15dea7bd8dee2c499743236ebe16165, type: 3}
       propertyPath: resetGameToMap
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7562874521353355270, guid: f15dea7bd8dee2c499743236ebe16165, type: 3}
+      propertyPath: winGameSceneName
+      value: WinScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 7562874521353355270, guid: f15dea7bd8dee2c499743236ebe16165, type: 3}
+      propertyPath: gameResetForAgentLearning
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8240953330258115669, guid: f15dea7bd8dee2c499743236ebe16165, type: 3}
       propertyPath: m_UseLimits
@@ -1902,6 +1922,14 @@ PrefabInstance:
       propertyPath: axeObject
       value: 
       objectReference: {fileID: 808807535}
+    - target: {fileID: 8654437240844658039, guid: f15dea7bd8dee2c499743236ebe16165, type: 3}
+      propertyPath: maxHand
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8654437240844658039, guid: f15dea7bd8dee2c499743236ebe16165, type: 3}
+      propertyPath: opponentIndex
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8758998094138114548, guid: f15dea7bd8dee2c499743236ebe16165, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -1959,6 +1987,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f15dea7bd8dee2c499743236ebe16165, type: 3}
+--- !u!114 &2568132850240164799 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8438871795389802986, guid: f15dea7bd8dee2c499743236ebe16165, type: 3}
+  m_PrefabInstance: {fileID: 2568132850240164798}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f13805f6bd3da6546b63aa6d6cdf493b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5308053757165705252
 PrefabInstance:
   m_ObjectHideFlags: 0

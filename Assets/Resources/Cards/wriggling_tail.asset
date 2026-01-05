@@ -18,4 +18,4 @@ MonoBehaviour:
   health: 2
   cost: 2
   description: "Atak 0, obrona 2. Sam ogon, ale za to bardzo zaj\u0119ty."
-  artwork: {fileID: 0}
+  artwork: {fileID: 2800000, guid: a28beed960477394cb7ddb30392e8523, type: 3}

@@ -22,7 +22,7 @@ public class ExitClick : MonoBehaviour, IClickable
         player.MoveAlongWorldPositions(pathFromTowerToExit, () =>
         {
             Debug.Log("Dotarliœmy na exit - ³adowanie sceny: " + nextSceneName);
-            SceneManager.LoadScene(nextSceneName);
+            LevelLoader.Instance.LoadLevelByName(nextSceneName);
         });
 
         TowerClick.chosenTower = null;

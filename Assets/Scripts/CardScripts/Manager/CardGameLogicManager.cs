@@ -28,16 +28,40 @@ CardGameLogicManager : MonoBehaviour
 
     public int opponentIndex = 1;
 
+    private int startNumberOfCardsPlayer = 4;
+    private int startNumberOfCardsEnemy = 4;
+
+
     public void InitGame()
     {
         player = new PlayerModel("Player", slotCountPerSide);
         enemy = new PlayerModel("Enemy", slotCountPerSide);
 
+        if (LevelLoader.Instance != null)
+        {
+            this.opponentIndex = LevelLoader.Instance.GetCurrentOpponentIndex();
+        }
+        else
+        {
+            this.opponentIndex = 0; // Fallback for testing
+        }
+
         player.deck = deckManager.CreateUserDeck();
         enemy.deck = deckManager.CreateOpponentDeck(opponentIndex);
 
-        DrawToHand(player, 4);
-        DrawToHand(enemy, 4);
+
+        if(opponentIndex == 1)
+        {
+            startNumberOfCardsEnemy = 5;
+        }
+
+        if (opponentIndex == 2)
+        {
+            startNumberOfCardsEnemy = 6;
+        }
+
+        DrawToHand(player, startNumberOfCardsPlayer);
+        DrawToHand(enemy, startNumberOfCardsEnemy);
 
         if (playerHandVisualizer != null)
         {
@@ -81,8 +105,8 @@ CardGameLogicManager : MonoBehaviour
         player.deck = deckManager.CreateUserDeck();
         enemy.deck = deckManager.CreateOpponentDeck(opponentIndex);
 
-        DrawToHand(player, 4);
-        DrawToHand(enemy, 4);
+        DrawToHand(player, startNumberOfCardsPlayer);
+        DrawToHand(enemy, startNumberOfCardsEnemy);
 
         // 8) Przypisz w³aœcicieli wizualizatorów i odœwie¿ (teraz ownery wskazuj¹ nowe modele)
         if (playerHandVisualizer != null)

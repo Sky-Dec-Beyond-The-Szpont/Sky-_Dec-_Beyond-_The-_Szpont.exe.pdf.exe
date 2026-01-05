@@ -19,4 +19,4 @@ MonoBehaviour:
   cost: 6
   description: "Atak 3, obrona 6. Zu\u017Cy\u0142 ju\u017C wszystkie dziewi\u0119\u0107
     \u017Cy\u0107, ale szpont dalej trzyma."
-  artwork: {fileID: 0}
+  artwork: {fileID: 2800000, guid: 5c8ae3a4ad8fac540a89cc72f30148c9, type: 3}

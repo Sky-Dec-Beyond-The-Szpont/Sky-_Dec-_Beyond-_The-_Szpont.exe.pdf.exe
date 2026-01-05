@@ -24,8 +24,7 @@ public class IntroVideoController : MonoBehaviour
     private void OnVideoEnd(VideoPlayer vp)
     {
         // Prze³¹czenie sceny po zakoñczeniu filmu
-        SceneManager.LoadScene(nextSceneName);
-        // ALBO przez indeks, jeœli wolisz:
-        // SceneManager.LoadScene(1);
+        LevelLoader.Instance.LoadLevelByName(nextSceneName);
+
     }
 }

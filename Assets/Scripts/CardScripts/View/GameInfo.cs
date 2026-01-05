@@ -25,7 +25,10 @@ public class GameInfo : MonoBehaviour
 
     [SerializeField] private GameObject axeObject;
 
+    [SerializeField]
     private CardGameLogicManager gameLogicManager;
+
+    [SerializeField]
     private SoundManager soundManager;
 
     private List<GameObject> spawnedCubes = new List<GameObject>();
@@ -59,25 +62,22 @@ public class GameInfo : MonoBehaviour
 
         CheckIfScalePointsChange();
         CheckIfSzpontChange();
-
-        ShowWinLoseInfo();
     }
 
-    private void ShowWinLoseInfo()
+    public void TriggerGameOver(bool playerWon)
     {
-        if (!gameLogicManager.GameEnded())
-            return;
-
-        bool playerWon = gameLogicManager.scalePoints < 0;
-
         winInfo.SetActive(playerWon);
         loseInfo.SetActive(!playerWon);
 
         axeObject.SetActive(true);
-        
         Rigidbody axeRb = axeObject.GetComponent<Rigidbody>();
-        axeRb.isKinematic = false;
-        axeRb.useGravity = true;
+        if (axeRb != null)
+        {
+            axeRb.isKinematic = false;
+            axeRb.useGravity = true;
+        }
+
+        Debug.Log($"GameInfo: UI Shown. Player Won: {playerWon}");
     }
 
     private void CheckIfSzpontChange()
