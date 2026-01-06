@@ -257,15 +257,17 @@ MonoBehaviour:
   gameLogic: {fileID: 8654437240844658039}
   enemyAgent: {fileID: 2297559824680223333}
   soundManager: {fileID: 0}
+  gameInfo: {fileID: 0}
   confirmAction: {fileID: -561816398972752488, guid: 27af04234f48f9144851a26afb0283b1, type: 3}
   enemyDelay: 1
   roundEndDelay: 1
   isPlayerTurn: 1
   endEpisodeDelay: 1
-  autoRestart: 1
   resetGameToMap: 0
   mapSceneName: MapScene
-  endEpisodeAfterBothTurns: 1
+  winGameSceneName: WinScene
+  menuSceneName: MenuScene
+  gameResetForAgentLearning: 1
 --- !u!1 &2533728250964239899
 GameObject:
   m_ObjectHideFlags: 0
@@ -312,13 +314,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   deckManager: {fileID: 8242474888127778854}
   slotCountPerSide: 4
-  maxHand: 6
+  maxHand: 7
   playerHandVisualizer: {fileID: 4706114323733492960}
   enemyHandVisualizer: {fileID: 3821459189472839692}
   turnNumber: 1
   endGameScalePoints: 10
   scalePoints: 0
-  opponentIndex: 0
+  opponentIndex: 1
 --- !u!1 &2559293584146588382
 GameObject:
   m_ObjectHideFlags: 0

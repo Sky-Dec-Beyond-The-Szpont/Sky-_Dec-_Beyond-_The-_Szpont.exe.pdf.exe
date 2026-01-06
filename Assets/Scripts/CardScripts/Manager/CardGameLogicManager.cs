@@ -41,24 +41,11 @@ CardGameLogicManager : MonoBehaviour
         {
             this.opponentIndex = LevelLoader.Instance.GetCurrentOpponentIndex();
         }
-        else
-        {
-            this.opponentIndex = 0; // Fallback for testing
-        }
 
         player.deck = deckManager.CreateUserDeck();
         enemy.deck = deckManager.CreateOpponentDeck(opponentIndex);
 
-
-        if(opponentIndex == 1)
-        {
-            startNumberOfCardsEnemy = 5;
-        }
-
-        if (opponentIndex == 2)
-        {
-            startNumberOfCardsEnemy = 6;
-        }
+        SetDifficulty();
 
         DrawToHand(player, startNumberOfCardsPlayer);
         DrawToHand(enemy, startNumberOfCardsEnemy);
@@ -81,6 +68,24 @@ CardGameLogicManager : MonoBehaviour
         LogHands();
     }
 
+    private void SetDifficulty()
+    {
+        if(opponentIndex == 0)
+        {
+            startNumberOfCardsEnemy = 4;
+        }
+
+        if (opponentIndex == 1)
+        {
+            startNumberOfCardsEnemy = 5;
+        }
+
+        if (opponentIndex == 2)
+        {
+            startNumberOfCardsEnemy = 6;
+        }
+    }
+
     public void ResetGame()
     {
         Debug.Log("CardGameLogicManager: ResetGame - restarting match.");
@@ -98,6 +103,9 @@ CardGameLogicManager : MonoBehaviour
 
         turnNumber = 1;
         scalePoints = 0;
+
+        this.opponentIndex = Random.Range(0, 3);
+        SetDifficulty();
 
         player = new PlayerModel("Player", slotCountPerSide);
         enemy = new PlayerModel("Enemy", slotCountPerSide);
