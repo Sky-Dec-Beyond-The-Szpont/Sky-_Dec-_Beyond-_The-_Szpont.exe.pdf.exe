@@ -31,7 +31,7 @@ public class ContentRoomGenerator : MonoBehaviour
 
         if(spawnTreasure)
         {
-            // Zak³adamy, ¿e ostatni prefab w itemPrefabs to skarb
+            
             Vector2Int size = Vector2Int.one;
             Vector2? pos = placementHelper.GetItemPlacementPosition(PlacementType.OpenSpace, 20, size, false);
             if(pos.HasValue)

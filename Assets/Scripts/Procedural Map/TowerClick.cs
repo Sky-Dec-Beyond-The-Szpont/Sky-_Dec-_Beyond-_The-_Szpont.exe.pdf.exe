@@ -13,6 +13,7 @@ public class TowerClick : MonoBehaviour, IClickable
     [SerializeField] private Camera baseCamera;
 
     public string towerSceneName = "SampleScene";
+    public string secondTowerSceneName = "SampleScene2";
 
     private PlayerMover player;
     private List<Vector3> pathToTower;         // od startu do tej wie¿y
@@ -91,26 +92,54 @@ public class TowerClick : MonoBehaviour, IClickable
             yield break;
         }
 
-        // fade + load additive
-        LevelLoader.Instance.LoadSceneAdditiveWithTransition(towerSceneName);
-
-        // czekamy a¿ scena faktycznie siê pojawi
-        while (!SceneManager.GetSceneByName(towerSceneName).IsValid() ||
-               !SceneManager.GetSceneByName(towerSceneName).isLoaded)
+        if (chosenTower.label == "Wie¿a 1")
         {
-            yield return null;
+            // fade + load additive
+            LevelLoader.Instance.LoadSceneAdditiveWithTransition(towerSceneName);
+
+            // czekamy a¿ scena faktycznie siê pojawi
+            while (!SceneManager.GetSceneByName(towerSceneName).IsValid() ||
+                   !SceneManager.GetSceneByName(towerSceneName).isLoaded)
+            {
+                yield return null;
+            }
+
+            isTowerSceneLoaded = true;
+
+            Scene towerScene = SceneManager.GetSceneByName(towerSceneName);
+            SceneManager.SetActiveScene(towerScene);
+
+            if (baseCamera != null)
+                baseCamera.enabled = false;
+
+            LevelLoader.Instance.PlayFadeIn();
+            Debug.Log($"TowerClick ({label}): za³adowano scenê wie¿y z przejœciem: {towerSceneName}");
+
+        }
+        else if (chosenTower.label == "Wie¿a 2")
+        {
+            LevelLoader.Instance.LoadSceneAdditiveWithTransition(secondTowerSceneName);
+
+            // czekamy a¿ scena faktycznie siê pojawi
+            while (!SceneManager.GetSceneByName(secondTowerSceneName).IsValid() ||
+                   !SceneManager.GetSceneByName(secondTowerSceneName).isLoaded)
+            {
+                yield return null;
+            }
+
+            isTowerSceneLoaded = true;
+
+            Scene towerScene = SceneManager.GetSceneByName(secondTowerSceneName);
+            SceneManager.SetActiveScene(towerScene);
+
+            if (baseCamera != null)
+                baseCamera.enabled = false;
+
+            LevelLoader.Instance.PlayFadeIn();
+            Debug.Log($"TowerClick ({label}): za³adowano scenê wie¿y z przejœciem: {secondTowerSceneName}");
         }
 
-        isTowerSceneLoaded = true;
-
-        Scene towerScene = SceneManager.GetSceneByName(towerSceneName);
-        SceneManager.SetActiveScene(towerScene);
-
-        if (baseCamera != null)
-            baseCamera.enabled = false;
-
-        LevelLoader.Instance.PlayFadeIn();
-        Debug.Log($"TowerClick ({label}): za³adowano scenê wie¿y z przejœciem: {towerSceneName}");
+        
     }
 
 
