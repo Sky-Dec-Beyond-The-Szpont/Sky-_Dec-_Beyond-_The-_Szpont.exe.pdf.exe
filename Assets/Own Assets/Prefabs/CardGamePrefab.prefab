@@ -1959,6 +1959,7 @@ GameObject:
   - component: {fileID: 1818138604161960275}
   - component: {fileID: 357591133121490163}
   - component: {fileID: 8316637458420112283}
+  - component: {fileID: 3954395285387715147}
   m_Layer: 0
   m_Name: old_chair_0001b
   m_TagString: Wood
@@ -2078,6 +2079,22 @@ LODGroup:
     renderers:
     - renderer: {fileID: 1818138604161960275}
   m_Enabled: 1
+--- !u!114 &3954395285387715147
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5635124026732787746}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8717bfb281bb72489ac6eebb1d973d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SittingEnemy
+  enemyPrefabList:
+  - {fileID: 3892864039522394319, guid: 273b8d449c1a65f4a9fdac62f220891d, type: 3}
+  - {fileID: 596938498909324042, guid: 5fa131acb57a473469a1a24dc426beec, type: 3}
+  - {fileID: 8460500753809044441, guid: 0251b9b9be830f646a4e2ed7a4749cf9, type: 3}
 --- !u!1 &5975355167494494622
 GameObject:
   m_ObjectHideFlags: 0
